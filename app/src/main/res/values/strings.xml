@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Garage Bands</string>
+    <string name="app_name">Bands</string>
     <string name="title_activity_main__user">Main User</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -10,8 +10,8 @@
     <string name="bandSelected">bandSelected</string>
     <string name="eventSelected">eventSelected</string>
 
-    <string name="title_activity_map_bands">Garage Bands</string>
-    <string name="title_activity_main_user">Garage Bands</string>
+    <string name="title_activity_map_bands">Bands</string>
+    <string name="title_activity_main_user">Bands</string>
 
     <string-array name="tab_titles">
         <item>Events</item>
