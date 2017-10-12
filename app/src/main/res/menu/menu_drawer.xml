@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/_menu_drawerItem_Acount"
+            android:icon="@drawable/ic_person_black"
+            android:title="Acount"/>
+        <item
+            android:id="@+id/_menu_drawerItem_LogOut"
+            android:icon="@drawable/ic_exit_to_app_black"
+            android:title="Log Out"
+            />
+        <item
+            android:id="@+id/_menu_drawerItem_About"
+            android:icon="@drawable/ic_menu_share"
+            android:title="About"
+            />
+    </group>
+</menu>

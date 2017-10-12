@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:title="Events"
+            android:id="@+id/_menu_bottomItem_Events"
+            android:icon="@drawable/ic_whatshot_black"
+            />
+        <item
+            android:title="Bands"
+            android:id="@+id/_menu_bottomItem_Bands"
+            android:icon="@drawable/ic_headset_black"
+            />
+        <item
+            android:title="Map"
+            android:id="@+id/_menu_bottomItem_Map"
+            android:icon="@drawable/ic_map_black"
+            />
+    </group>
+</menu>
