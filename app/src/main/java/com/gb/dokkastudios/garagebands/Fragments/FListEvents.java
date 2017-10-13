@@ -16,7 +16,7 @@ import Classes.Events;
 import Classes.Fragments;
 import Classes.RetrofitInstance;
 import Classes.StoreResources;
-import Interfaces.GarageBandsServices;
+import Interfaces.OnStageServices;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -60,7 +60,7 @@ public class FListEvents extends Fragments implements Callback<Events>
     {
         Retrofit _retrofit = RetrofitInstance.getRetrofit();
 
-        GarageBandsServices _serviceGB = _retrofit.create(GarageBandsServices.class);
+        OnStageServices _serviceGB = _retrofit.create(OnStageServices.class);
         Call<Events> _eventsReq = _serviceGB.getEvents();
         _eventsReq.enqueue(this);
     }

@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 import Classes.Fragments;
 import Classes.RetrofitInstance;
 import Classes.User;
-import Interfaces.GarageBandsServices;
+import Interfaces.OnStageServices;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -65,7 +65,7 @@ public class FLogIn extends Fragments implements Callback<User>
                 .append(Base64.encodeToString(_loginBytes, Base64.DEFAULT));
 
         Retrofit _retrofit = RetrofitInstance.getRetrofit();
-        GarageBandsServices _serviceGB = _retrofit.create(GarageBandsServices.class);
+        OnStageServices _serviceGB = _retrofit.create(OnStageServices.class);
         Call<User> _userReq = _serviceGB.getUser(_loginData.toString());
         _userReq.enqueue(this);
     }

@@ -1,6 +1,6 @@
 package Classes;
 
-import Interfaces.GarageBandsServices;
+import Interfaces.OnStageServices;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -23,7 +23,7 @@ public class RetrofitInstance
     {
         if(INSTANCE.mRetrofit == null)
             INSTANCE.mRetrofit = new Retrofit.Builder()
-                    .baseUrl(GarageBandsServices.BASE_URL)
+                    .baseUrl(OnStageServices.BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 

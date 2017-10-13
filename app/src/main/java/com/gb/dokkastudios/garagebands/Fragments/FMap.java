@@ -29,7 +29,7 @@ import Classes.Events;
 import Classes.Fragments;
 import Classes.RetrofitInstance;
 import Classes.StoreResources;
-import Interfaces.GarageBandsServices;
+import Interfaces.OnStageServices;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -77,7 +77,7 @@ public class FMap extends Fragments implements OnMapReadyCallback, Callback<Even
     private void BandsEventsFromDB()
     {
         Retrofit _retrofit = RetrofitInstance.getRetrofit();
-        GarageBandsServices __serviceGB = _retrofit.create(GarageBandsServices.class);
+        OnStageServices __serviceGB = _retrofit.create(OnStageServices.class);
         Call<Events> _bandsEvtsReq = __serviceGB.getEvents();
         _bandsEvtsReq.enqueue(this);
     }

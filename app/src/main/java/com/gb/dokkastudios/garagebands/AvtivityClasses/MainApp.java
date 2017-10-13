@@ -28,7 +28,7 @@ import Classes.PagerIndicators;
 import Classes.RetrofitInstance;
 import Classes.StoreResources;
 import Classes.User;
-import Interfaces.GarageBandsServices;
+import Interfaces.OnStageServices;
 import Interfaces.CallbackMainApp;
 import Interfaces.RequestTo;
 import retrofit2.Call;
@@ -201,7 +201,7 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
     private void GetB()
     {
         Retrofit _retrofit = RetrofitInstance.getRetrofit();
-        GarageBandsServices _serviceGB = _retrofit.create(GarageBandsServices.class);
+        OnStageServices _serviceGB = _retrofit.create(OnStageServices.class);
         Call<Bands> _bandReq = _serviceGB.getBands();
         _bandReq.enqueue(new Callback<Bands>()
         {
@@ -236,7 +236,7 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
     private void GetBE()
     {
         Retrofit _retrofit = RetrofitInstance.getRetrofit();
-        GarageBandsServices __serviceGB = _retrofit.create(GarageBandsServices.class);
+        OnStageServices __serviceGB = _retrofit.create(OnStageServices.class);
         Call<Events> _bandsEvtsReq = __serviceGB.getEvents();
         _bandsEvtsReq.enqueue(this);
     }

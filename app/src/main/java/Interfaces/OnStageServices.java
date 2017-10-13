@@ -13,9 +13,10 @@ import retrofit2.http.Path;
  * Created by BelialDaniel on 8/10/17.
  */
 
-public interface GarageBandsServices
+public interface OnStageServices
 {
     String BASE_URL = "http://dokkastudios.com/";
+    String IMAGES_URL = "http://dokkastudios.com/images/";
 
     /**
      *

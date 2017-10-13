@@ -15,7 +15,7 @@ import Classes.Bands;
 import Classes.Fragments;
 import Classes.RetrofitInstance;
 import Classes.StoreResources;
-import Interfaces.GarageBandsServices;
+import Interfaces.OnStageServices;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -54,7 +54,7 @@ public class FListBands extends Fragments implements Callback<Bands>
     private void BandsFromDB()
     {
         Retrofit _retrofit = RetrofitInstance.getRetrofit();
-        GarageBandsServices _serviceGB = _retrofit.create(GarageBandsServices.class);
+        OnStageServices _serviceGB = _retrofit.create(OnStageServices.class);
         Call<Bands> _bandReq = _serviceGB.getBands();
         _bandReq.enqueue(this);
     }

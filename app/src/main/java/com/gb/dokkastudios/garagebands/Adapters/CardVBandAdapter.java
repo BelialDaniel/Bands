@@ -1,6 +1,5 @@
 package com.gb.dokkastudios.garagebands.Adapters;
 
-import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,17 +7,19 @@ import android.view.ViewGroup;
 
 import com.gb.dokkastudios.garagebands.Holders.BandCardVHolder;
 import com.gb.dokkastudios.garagebands.R;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import Classes.Band;
 import Interfaces.CallbackMainUser;
+import Interfaces.OnStageServices;
 
 /**
  * Created by BelialDaniel on 8/26/17.
  */
-public class CardVBandAdapter extends RecyclerView.Adapter<BandCardVHolder>
+public class CardVBandAdapter extends RecyclerView.Adapter<BandCardVHolder> implements Callback
 {
     private final List<Band> mBands;
     private BandCardVHolder mBandHolder = null;
@@ -45,10 +46,10 @@ public class CardVBandAdapter extends RecyclerView.Adapter<BandCardVHolder>
         mBandHolder = holder;
 
         Picasso.with(mBandHolder.mBandCardView.getContext())
-                .load(R.drawable.no_image)
+                .load(OnStageServices.IMAGES_URL + mBands.get(position).getImage())
                 .resize(688, 360)
                 .centerCrop()
-                .into(mBandHolder.mImageBackBand);
+                .into(mBandHolder.mImageBackBand, this);
 
         //ViewCompat.setTransitionName(mBandHolder.mImageBackBand, mBands.get(position).getBandName());
 
@@ -63,5 +64,19 @@ public class CardVBandAdapter extends RecyclerView.Adapter<BandCardVHolder>
     public int getItemCount()
     {
         return mBands.size();
+    }
+
+    @Override
+    public void onSuccess()
+    {}
+
+    @Override
+    public void onError()
+    {
+        Picasso.with(mBandHolder.mBandCardView.getContext())
+                .load(R.drawable.no_image)
+                .resize(688, 360)
+                .centerCrop()
+                .into(mBandHolder.mImageBackBand);
     }
 }

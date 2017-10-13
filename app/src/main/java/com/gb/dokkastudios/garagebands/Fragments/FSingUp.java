@@ -18,7 +18,7 @@ import Classes.Fragments;
 import Classes.MessagesInfo;
 import Classes.RetrofitInstance;
 import Classes.User;
-import Interfaces.GarageBandsServices;
+import Interfaces.OnStageServices;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -80,7 +80,7 @@ public class FSingUp extends Fragments implements Callback<MessagesInfo>, View.O
 
         Retrofit _retrofit = RetrofitInstance.getRetrofit();
 
-        GarageBandsServices _serviceGB = _retrofit.create(GarageBandsServices.class);
+        OnStageServices _serviceGB = _retrofit.create(OnStageServices.class);
         Call<MessagesInfo> _userSignUpData = _serviceGB.AddUser(_signUpData.toString());
         _userSignUpData.enqueue(this);
     }
