@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.gb.dokkastudios.garagebands.AvtivityClasses.InfoBand">
+    tools:context="com.gb.dokkastudios.enkor.Avtivities.InfoBand">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

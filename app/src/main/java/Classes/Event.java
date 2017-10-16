@@ -1,6 +1,6 @@
 package Classes;
 
-import com.gb.dokkastudios.garagebands.R;
+import com.gb.dokkastudios.enkor.R;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.annotations.SerializedName;

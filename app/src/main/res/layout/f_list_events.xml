@@ -12,5 +12,5 @@
     android:layout_marginBottom="0dp"
     app:layoutManager="LinearLayoutManager"
     app:layout_collapseParallaxMultiplier="1.0"
-    tools:context="com.gb.dokkastudios.garagebands.Fragments.FListEvents"
+    tools:context="com.gb.dokkastudios.enkor.Fragments.FListEvents"
     tools:listitem="@layout/cv_event"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.gb.dokkastudios.garagebands">
+          package="com.gb.dokkastudios.enkor">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
@@ -22,7 +22,7 @@
             android:value="AIzaSyCcE8zJEAZFXizZ2ZoPoygqjZ1DtcwHNVM"/>
 
         <activity
-            android:name=".AvtivityClasses.MainApp"
+            android:name="com.gb.dokkastudios.enkor.Avtivities.MainApp"
             android:theme="@style/AppTheme.MainAppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -31,16 +31,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AvtivityClasses.MainUser"
+            android:name="com.gb.dokkastudios.enkor.Avtivities.MainUser"
             android:label="@string/title_activity_main_user"
             android:theme="@style/AppTheme.MainUserTheme">
         </activity>
         <activity
-            android:name=".AvtivityClasses.InfoBand"
+            android:name="com.gb.dokkastudios.enkor.Avtivities.InfoBand"
             android:theme="@style/AppTheme.InfoActivityTheme">
         </activity>
         <activity
-            android:name=".AvtivityClasses.InfoEvent"
+            android:name="com.gb.dokkastudios.enkor.Avtivities.InfoEvent"
             android:theme="@style/AppTheme.InfoActivityTheme">
         </activity>
 
