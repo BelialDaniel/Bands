@@ -1,4 +1,4 @@
-package com.gb.dokkastudios.enkor.Fragments;
+package com.dokkastudios.enkor.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,7 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gb.dokkastudios.enkor.Adapters.ListSongsAdapter;
+import com.dokkastudios.enkor.ui.adapters.ListSongsAdapter;
+
 import com.gb.dokkastudios.enkor.R;
 
 import java.util.List;

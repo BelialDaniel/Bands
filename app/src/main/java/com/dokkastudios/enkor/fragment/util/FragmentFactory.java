@@ -1,17 +1,17 @@
 package com.dokkastudios.enkor.fragment.util;
 
 import com.dokkastudios.enkor.fragment.Fragments;
-import com.gb.dokkastudios.enkor.Fragments.FBandsCategories;
-import com.gb.dokkastudios.enkor.Fragments.FListEvents;
-import com.gb.dokkastudios.enkor.Fragments.FNoInternet;
-import com.gb.dokkastudios.enkor.Fragments.FInitApp;
-import com.gb.dokkastudios.enkor.Fragments.FInfoBand;
-import com.gb.dokkastudios.enkor.Fragments.FInfoEvent;
-import com.gb.dokkastudios.enkor.Fragments.FListBands;
-import com.gb.dokkastudios.enkor.Fragments.FLogIn;
-import com.gb.dokkastudios.enkor.Fragments.FMap;
-import com.gb.dokkastudios.enkor.Fragments.FSingUp;
-import com.gb.dokkastudios.enkor.Fragments.FListSongs;
+import com.dokkastudios.enkor.ui.fragments.FBandsCategories;
+import com.dokkastudios.enkor.ui.fragments.FInfoBand;
+import com.dokkastudios.enkor.ui.fragments.FInfoEvent;
+import com.dokkastudios.enkor.ui.fragments.FInitApp;
+import com.dokkastudios.enkor.ui.fragments.FListBands;
+import com.dokkastudios.enkor.ui.fragments.FListEvents;
+import com.dokkastudios.enkor.ui.fragments.FListSongs;
+import com.dokkastudios.enkor.ui.fragments.FLogIn;
+import com.dokkastudios.enkor.ui.fragments.FMap;
+import com.dokkastudios.enkor.ui.fragments.FNoInternet;
+import com.dokkastudios.enkor.ui.fragments.FSingUp;
 
 /**
  * Created by BelialDaniel on 8/31/17.

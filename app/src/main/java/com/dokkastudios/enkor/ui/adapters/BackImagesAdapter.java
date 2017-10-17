@@ -1,4 +1,4 @@
-package com.gb.dokkastudios.enkor.Adapters;
+package com.dokkastudios.enkor.ui.adapters;
 
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;

@@ -1,4 +1,4 @@
-package com.gb.dokkastudios.enkor.Avtivities;
+package com.dokkastudios.enkor.ui.activities;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -9,12 +9,14 @@ import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.dokkastudios.enkor.listeners.CallbackMainApp;
+import com.dokkastudios.enkor.services.EnkorServices;
 import com.dokkastudios.enkor.fragment.util.CommitFragment;
-import com.gb.dokkastudios.enkor.Adapters.BackImagesAdapter;
-import com.gb.dokkastudios.enkor.Fragments.FNoInternet;
-import com.gb.dokkastudios.enkor.Fragments.FInitApp;
-import com.gb.dokkastudios.enkor.Fragments.FLogIn;
-import com.gb.dokkastudios.enkor.Fragments.FSingUp;
+import com.dokkastudios.enkor.ui.fragments.FLogIn;
+import com.dokkastudios.enkor.ui.adapters.BackImagesAdapter;
+import com.dokkastudios.enkor.ui.fragments.FNoInternet;
+import com.dokkastudios.enkor.ui.fragments.FInitApp;
+import com.dokkastudios.enkor.ui.fragments.FSingUp;
 import com.gb.dokkastudios.enkor.R;
 
 import Classes.Bands;
@@ -27,8 +29,7 @@ import com.dokkastudios.enkor.util.PagerIndicator;
 import com.dokkastudios.enkor.services.util.RetrofitInstance;
 import com.dokkastudios.enkor.util.StoreResources;
 import Classes.User;
-import com.dokkastudios.enkor.services.EnkorServices;
-import com.dokkastudios.enkor.listeners.CallbackMainApp;
+
 import com.dokkastudios.enkor.util.RequestTo;
 import retrofit2.Call;
 import retrofit2.Callback;

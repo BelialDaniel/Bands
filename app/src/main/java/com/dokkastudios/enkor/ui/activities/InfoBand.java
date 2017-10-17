@@ -1,16 +1,18 @@
-package com.gb.dokkastudios.enkor.Avtivities;
+package com.dokkastudios.enkor.ui.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.gb.dokkastudios.enkor.R;
+
+import com.dokkastudios.enkor.services.EnkorServices;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import Classes.Band;
+
 import com.dokkastudios.enkor.util.StoreResources;
-import com.dokkastudios.enkor.services.EnkorServices;
 
 public class InfoBand extends AppCompatActivity implements Callback
 {

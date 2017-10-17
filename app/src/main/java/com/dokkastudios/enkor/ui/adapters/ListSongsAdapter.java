@@ -1,4 +1,4 @@
-package com.gb.dokkastudios.enkor.Adapters;
+package com.dokkastudios.enkor.ui.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,7 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.gb.dokkastudios.enkor.Holders.SongHolder;
+import com.dokkastudios.enkor.ui.holders.SongHolder;
+
 import com.gb.dokkastudios.enkor.R;
 
 import java.util.List;

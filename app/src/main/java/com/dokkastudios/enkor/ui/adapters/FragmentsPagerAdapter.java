@@ -1,13 +1,13 @@
-package com.gb.dokkastudios.enkor.Adapters;
+package com.dokkastudios.enkor.ui.adapters;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.dokkastudios.enkor.fragment.Fragments;
+import com.dokkastudios.enkor.fragment.util.FragmentFactory;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.dokkastudios.enkor.fragment.util.FragmentFactory;
-import com.dokkastudios.enkor.fragment.Fragments;
 
 /**
  * Created by BelialDaniel on 9/8/17.

@@ -1,4 +1,4 @@
-package com.gb.dokkastudios.enkor.Fragments;
+package com.dokkastudios.enkor.ui.fragments;
 
 
 import android.os.Bundle;
@@ -9,10 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gb.dokkastudios.enkor.Adapters.FragmentsPagerAdapter;
-import com.gb.dokkastudios.enkor.R;
-
 import com.dokkastudios.enkor.fragment.Fragments;
+import com.dokkastudios.enkor.ui.adapters.FragmentsPagerAdapter;
+import com.gb.dokkastudios.enkor.R;
 
 /**
  * A simple {@link android.support.v4.app.Fragment} subclass.

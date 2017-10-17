@@ -1,4 +1,4 @@
-package com.gb.dokkastudios.enkor.Fragments;
+package com.dokkastudios.enkor.ui.fragments;
 
 
 import android.content.pm.PackageManager;
@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gb.dokkastudios.enkor.R;
+
+import com.dokkastudios.enkor.fragment.Fragments;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -20,7 +22,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 
 import Classes.Event;
-import com.dokkastudios.enkor.fragment.Fragments;
+
 import com.dokkastudios.enkor.util.StoreResources;
 
 public class FInfoEvent extends Fragments implements OnMapReadyCallback

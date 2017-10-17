@@ -1,4 +1,4 @@
-package com.gb.dokkastudios.enkor.Holders;
+package com.dokkastudios.enkor.ui.holders;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

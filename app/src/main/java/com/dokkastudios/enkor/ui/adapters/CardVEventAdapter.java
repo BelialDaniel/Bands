@@ -1,18 +1,19 @@
-package com.gb.dokkastudios.enkor.Adapters;
+package com.dokkastudios.enkor.ui.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gb.dokkastudios.enkor.Holders.EventCardVHolder;
+import com.dokkastudios.enkor.ui.holders.EventCardVHolder;
 import com.gb.dokkastudios.enkor.R;
+
+import com.dokkastudios.enkor.listeners.CallbackMainUser;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import Classes.Event;
-import com.dokkastudios.enkor.listeners.CallbackMainUser;
 
 /**
  * Created by BelialDaniel on 8/28/17.

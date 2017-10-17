@@ -1,4 +1,4 @@
-package com.gb.dokkastudios.enkor.Fragments;
+package com.dokkastudios.enkor.ui.fragments;
 
 
 import android.os.Bundle;
@@ -12,13 +12,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gb.dokkastudios.enkor.R;
+
+import com.dokkastudios.enkor.services.EnkorServices;
 import com.google.gson.Gson;
 
 import com.dokkastudios.enkor.fragment.Fragments;
 import Classes.MessagesInfo;
 import com.dokkastudios.enkor.services.util.RetrofitInstance;
 import Classes.User;
-import com.dokkastudios.enkor.services.EnkorServices;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -1,4 +1,4 @@
-package com.gb.dokkastudios.enkor.Avtivities;
+package com.dokkastudios.enkor.ui.activities;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -17,21 +17,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.gb.dokkastudios.enkor.Fragments.FBandsCategories;
-import com.gb.dokkastudios.enkor.Fragments.FListEvents;
-import com.gb.dokkastudios.enkor.Fragments.FMap;
-import com.gb.dokkastudios.enkor.Holders.EventCardVHolder;
+import com.dokkastudios.enkor.ui.fragments.FBandsCategories;
+import com.dokkastudios.enkor.ui.fragments.FListEvents;
+import com.dokkastudios.enkor.ui.holders.EventCardVHolder;
+import com.dokkastudios.enkor.ui.fragments.FMap;
 import com.gb.dokkastudios.enkor.R;
+
+import com.dokkastudios.enkor.database.DB;
+import com.dokkastudios.enkor.listeners.CallbackMainUser;
 import com.squareup.picasso.Picasso;
 
 import Classes.Band;
 import com.dokkastudios.enkor.fragment.util.CommitFragment;
-import com.dokkastudios.enkor.database.DB;
 import com.dokkastudios.enkor.database.util.RequestsToTheDataBase;
 import Classes.Event;
 import com.dokkastudios.enkor.util.StoreResources;
 import Classes.User;
-import com.dokkastudios.enkor.listeners.CallbackMainUser;
+
 import com.dokkastudios.enkor.util.RequestTo;
 
 public class MainUser extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, CallbackMainUser, BottomNavigationView.OnNavigationItemSelectedListener

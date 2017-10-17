@@ -1,4 +1,4 @@
-package com.gb.dokkastudios.enkor.Fragments;
+package com.dokkastudios.enkor.ui.fragments;
 
 
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.gb.dokkastudios.enkor.Adapters.ListSongsAdapter;
+import com.dokkastudios.enkor.ui.adapters.ListSongsAdapter;
 import com.gb.dokkastudios.enkor.R;
 
 import Classes.Band;

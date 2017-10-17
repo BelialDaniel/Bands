@@ -1,4 +1,4 @@
-package com.gb.dokkastudios.enkor.Fragments;
+package com.dokkastudios.enkor.ui.fragments;
 
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -12,6 +12,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.gb.dokkastudios.enkor.R;
+
+import com.dokkastudios.enkor.fragment.Fragments;
+import com.dokkastudios.enkor.services.EnkorServices;
+import com.dokkastudios.enkor.services.util.RetrofitInstance;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -26,10 +30,9 @@ import java.util.List;
 
 import Classes.Event;
 import Classes.Events;
-import com.dokkastudios.enkor.fragment.Fragments;
-import com.dokkastudios.enkor.services.util.RetrofitInstance;
+
 import com.dokkastudios.enkor.util.StoreResources;
-import com.dokkastudios.enkor.services.EnkorServices;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

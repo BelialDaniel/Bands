@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.gb.dokkastudios.enkor.Avtivities.InfoEvent">
+    tools:context="com.dokkastudios.enkor.ui.activities.InfoEvent">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/_appBarInfoEventAct"

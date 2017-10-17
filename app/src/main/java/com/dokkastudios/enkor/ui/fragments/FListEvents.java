@@ -1,4 +1,4 @@
-package com.gb.dokkastudios.enkor.Fragments;
+package com.dokkastudios.enkor.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,14 +9,17 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 
-import com.gb.dokkastudios.enkor.Adapters.CardVEventAdapter;
+import com.dokkastudios.enkor.fragment.Fragments;
+import com.dokkastudios.enkor.services.EnkorServices;
+import com.dokkastudios.enkor.services.util.RetrofitInstance;
+import com.dokkastudios.enkor.ui.adapters.CardVEventAdapter;
+
 import com.gb.dokkastudios.enkor.R;
 
 import Classes.Events;
-import com.dokkastudios.enkor.fragment.Fragments;
-import com.dokkastudios.enkor.services.util.RetrofitInstance;
+
 import com.dokkastudios.enkor.util.StoreResources;
-import com.dokkastudios.enkor.services.EnkorServices;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

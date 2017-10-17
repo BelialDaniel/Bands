@@ -22,7 +22,7 @@
             android:value="AIzaSyCcE8zJEAZFXizZ2ZoPoygqjZ1DtcwHNVM"/>
 
         <activity
-            android:name="com.gb.dokkastudios.enkor.Avtivities.MainApp"
+            android:name="com.dokkastudios.enkor.ui.activities.MainApp"
             android:theme="@style/AppTheme.MainAppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -31,16 +31,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.gb.dokkastudios.enkor.Avtivities.MainUser"
+            android:name="com.dokkastudios.enkor.ui.activities.MainUser"
             android:label="@string/title_activity_main_user"
             android:theme="@style/AppTheme.MainUserTheme">
         </activity>
         <activity
-            android:name="com.gb.dokkastudios.enkor.Avtivities.InfoBand"
+            android:name="com.dokkastudios.enkor.ui.activities.InfoBand"
             android:theme="@style/AppTheme.InfoActivityTheme">
         </activity>
         <activity
-            android:name="com.gb.dokkastudios.enkor.Avtivities.InfoEvent"
+            android:name="com.dokkastudios.enkor.ui.activities.InfoEvent"
             android:theme="@style/AppTheme.InfoActivityTheme">
         </activity>
 

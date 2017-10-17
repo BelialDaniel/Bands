@@ -1,4 +1,4 @@
-package com.gb.dokkastudios.enkor.Avtivities;
+package com.dokkastudios.enkor.ui.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

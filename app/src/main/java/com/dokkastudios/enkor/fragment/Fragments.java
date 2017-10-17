@@ -7,11 +7,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.gb.dokkastudios.enkor.Avtivities.MainApp;
-import com.gb.dokkastudios.enkor.Avtivities.MainUser;
-
 import com.dokkastudios.enkor.listeners.CallbackMainApp;
 import com.dokkastudios.enkor.listeners.CallbackMainUser;
+import com.dokkastudios.enkor.ui.activities.MainApp;
+import com.dokkastudios.enkor.ui.activities.MainUser;
 
 /**
  * Created by BelialDaniel on 8/30/17.
