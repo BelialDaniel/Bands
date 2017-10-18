@@ -10,6 +10,6 @@
     android:layout_marginLeft="0dp"
     android:layout_marginRight="0dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.dokkastudios.enkor.ui.fragments.FListSongs"
+    tools:context="com.dokkastudios.enkore.ui.fragments.FListSongs"
     tools:listitem="@layout/f_song"
     />

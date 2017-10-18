@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.dokkastudios.enkor.ui.fragments.FBandsCategories">
+    tools:context="com.dokkastudios.enkore.ui.fragments.FBandsCategories">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/_tabLTitleMUser"

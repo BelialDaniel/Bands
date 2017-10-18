@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dokkastudios.enkor.ui.fragments.FSingUp">
+    tools:context="com.dokkastudios.enkore.ui.fragments.FSingUp">
 
     <android.support.v7.widget.CardView
         android:id="@+id/_cardVMainAppSingUp"
