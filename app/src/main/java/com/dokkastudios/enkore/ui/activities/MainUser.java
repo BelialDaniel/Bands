@@ -17,7 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.dokkastudios.enkore.fragment.CommitFragmentsMainUser;
+import com.dokkastudios.enkore.fragment.CommitFragmentsInMainUser;
 import com.dokkastudios.enkore.fragment.CommitAFragment;
 import com.dokkastudios.enkore.ui.fragments.FBandsCategories;
 import com.dokkastudios.enkore.ui.fragments.FListEvents;
@@ -58,7 +58,7 @@ public class MainUser extends AppCompatActivity implements NavigationView.OnNavi
         setContentView(R.layout.a_main_user);
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        mCommitAFragment = new CommitFragmentsMainUser(getSupportFragmentManager());
+        mCommitAFragment = new CommitFragmentsInMainUser(getSupportFragmentManager());
 
         SetReferences();
     }

@@ -13,9 +13,9 @@ import com.dokkastudios.enkore.ui.fragments.FMap;
  * Created by BelialDaniel on 10/20/17.
  */
 
-public class CommitFragmentsMainUser extends CommitAFragment
+public class CommitFragmentsInMainUser extends CommitAFragment
 {
-    public CommitFragmentsMainUser(FragmentManager fragmentManager)
+    public CommitFragmentsInMainUser(FragmentManager fragmentManager)
     {
         super(fragmentManager);
     }
