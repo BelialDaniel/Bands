@@ -1,7 +1,7 @@
 package com.dokkastudios.enkore.fragment;
 
 import android.content.Context;
-import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,39 +14,35 @@ import com.dokkastudios.enkore.ui.activities.MainUser;
 
 /**
  * Created by BelialDaniel on 8/30/17.
- * A simple {@link android.support.v4.app.Fragment} subclass.
+ * A simple {@link Fragment} subclass.
  */
 
-public class Fragments extends android.support.v4.app.Fragment
+public abstract class Fragments extends Fragment implements IFragment
 {
-    private int mColumnCount = 1;
-
     protected CallbackMainApp mCallbackMA = null;
     protected CallbackMainUser mCallBackMU = null;
 
-    public String FRAGMENT_TAG = "";
+    private String mFragmentTag = "";
 
     protected View mSView = null;
     protected Context mSContext = null;
 
     public Fragments() {}
 
-    /**
-     *
-     * @param _name
-     */
-    @Deprecated
-    public void setName(String _name)
+    @Override
+    public void setFragmentTag(String tag)
     {
-        Bundle args = new Bundle();
-        this.setArguments(args);
+        mFragmentTag = tag;
     }
 
-    /**
-     *
-     * @return
-     */
-    public RecyclerView getRecyclerView()
+    @Override
+    public String getFragmentTag()
+    {
+        return mFragmentTag;
+    }
+
+    @Override
+    public RecyclerView getRecyclerView(int mColumnCount)
     {
         RecyclerView recyclerView = null;
         if (mSView instanceof RecyclerView)
@@ -63,17 +59,14 @@ public class Fragments extends android.support.v4.app.Fragment
         return recyclerView;
     }
 
-    /**
-     *
-     * @param _callback
-     */
+    @Override
     @Deprecated
-    public void RegisterListener(Object _callback)
+    public void registerListener(Object _callback)
     {
         if(_callback instanceof MainApp)
-            this.mCallbackMA = (CallbackMainApp) _callback;
+            mCallbackMA = (CallbackMainApp) _callback;
         else if(_callback instanceof MainUser)
-            this.mCallBackMU = (CallbackMainUser) _callback;
+            mCallBackMU = (CallbackMainUser) _callback;
 
     }
 
@@ -84,9 +77,9 @@ public class Fragments extends android.support.v4.app.Fragment
         mSContext = context;
 
         if(context instanceof MainUser)
-            this.mCallBackMU = (CallbackMainUser) context;
+            mCallBackMU = (CallbackMainUser) context;
         else if(context instanceof MainApp)
-            this.mCallbackMA = (CallbackMainApp) context;
+            mCallbackMA = (CallbackMainApp) context;
         else
             throw new RuntimeException(context.toString() + " must implement CallbackMainApp or CallbackMainUser");
     }

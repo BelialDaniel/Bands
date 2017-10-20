@@ -45,7 +45,7 @@ public class EventCVHolder extends RecyclerView.ViewHolder implements View.OnCli
         mFloatingABSaveEvent.setOnClickListener(this);
     }
 
-    private void SaveEvent()
+    private void saveOrRemoveEvent()
     {
         RequestsToTheDataBase.contextToGetDataBase(mEventCardView.getContext()).requestTo(new RequestTo<DB>()
         {
@@ -78,7 +78,7 @@ public class EventCVHolder extends RecyclerView.ViewHolder implements View.OnCli
         //Log.i("Dimenciones Image", "W : " + mImageBackEvent.getWidth() + " H : " + mImageBackEvent.getHeight());
         if(view instanceof FloatingActionButton)
         {
-            SaveEvent();
+            saveOrRemoveEvent();
         }
         else
         {

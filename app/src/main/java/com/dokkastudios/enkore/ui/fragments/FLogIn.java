@@ -78,7 +78,7 @@ public class FLogIn extends Fragments implements Callback<User>
 
         if(_response.isSuccessful())
         {
-            mCallbackMA.LogInSuccess(_response.body());
+            mCallbackMA.onLogInSuccess(_response.body());
         }
         else
         {

@@ -1,5 +1,6 @@
 package com.dokkastudios.enkore.ui.adapters;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
@@ -26,15 +27,22 @@ public class FragmentsPagerAdapter extends FragmentStatePagerAdapter
     }
 
     @Override
-    public android.support.v4.app.Fragment getItem(int position)
+    public Fragment getItem(int position)
     {
         return _mFragments.get(position);
     }
 
+    @Deprecated
     public void addFragment(Class _class, String _name)
     {
-        _mFragments.add(FragmentFactory.getFragment(_class));
+        _mFragments.add(FragmentFactory.createFragment(_class));
         _mTitles.add(_name);
+    }
+
+    public void addFragment(Fragments frag, String name)
+    {
+        _mFragments.add(frag);
+        _mTitles.add(name);
     }
 
     @Override

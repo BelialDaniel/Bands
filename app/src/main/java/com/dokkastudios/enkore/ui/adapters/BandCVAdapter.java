@@ -25,7 +25,7 @@ public class BandCVAdapter extends RecyclerView.Adapter<BandCVHolder>
     private BandCVHolder mBandHolder = null;
     private CallbackMainUser onBandLisClickListener = null;
 
-    private View _view = null;
+    private View view = null;
 
     public BandCVAdapter(List<Band> _bands, CallbackMainUser _callbackItemClick)
     {
@@ -36,8 +36,8 @@ public class BandCVAdapter extends RecyclerView.Adapter<BandCVHolder>
     @Override
     public BandCVHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        _view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cv_band, parent, false);
-        return new BandCVHolder(_view);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cv_band, parent, false);
+        return new BandCVHolder(view);
     }
 
     @Override

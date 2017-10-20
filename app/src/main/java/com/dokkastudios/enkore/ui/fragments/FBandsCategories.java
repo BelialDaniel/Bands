@@ -46,7 +46,8 @@ public class FBandsCategories extends Fragments implements ViewPager.OnPageChang
         if(_mFragAdapter == null)
         {
             _mFragAdapter = new FragmentsPagerAdapter(getChildFragmentManager());
-            _mFragAdapter.addFragment(FListBands.class, "Metal");
+            //_mFragAdapter.addFragment(FListBands.class, "Metal");
+            _mFragAdapter.addFragment(new FListBands(), "Metal");
         }
 
         _mViewPFragments.addOnPageChangeListener(this);

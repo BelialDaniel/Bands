@@ -21,9 +21,6 @@ public class FListSongs extends Fragments
 {
     private List<Song> _mSongs = null;
 
-    // TODO: Customize parameters
-    private int mColumnCount = 1;
-
     public FListSongs() {}
 
     @Override
@@ -52,7 +49,7 @@ public class FListSongs extends Fragments
 
     private void AsignSongsToList()
     {
-        RecyclerView _reView = getRecyclerView();
+        RecyclerView _reView = getRecyclerView(1);
         if(_reView != null)
             _reView.setAdapter(new ListSongsAdapter(_mSongs, new Object()));
     }

@@ -35,6 +35,6 @@ public class FNoInternet extends Fragments implements View.OnClickListener
     @Override
     public void onClick(View view)
     {
-        mCallbackMA.CheckInternet();
+        mCallbackMA.onCheckInternet();
     }
 }

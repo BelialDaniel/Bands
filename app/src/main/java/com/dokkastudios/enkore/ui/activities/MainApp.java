@@ -1,5 +1,6 @@
 package com.dokkastudios.enkore.ui.activities;
 
+
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v4.view.ViewPager;
@@ -9,9 +10,10 @@ import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.dokkastudios.enkore.fragment.CommitFragmentsInMainApp;
+import com.dokkastudios.enkore.fragment.CommitAFragment;
 import com.dokkastudios.enkore.listeners.CallbackMainApp;
 import com.dokkastudios.enkore.services.EnkorServices;
-import com.dokkastudios.enkore.fragment.util.CommitFragment;
 import com.dokkastudios.enkore.ui.fragments.FLogIn;
 import com.dokkastudios.enkore.ui.adapters.BackImagesAdapter;
 import com.dokkastudios.enkore.ui.fragments.FNoInternet;
@@ -31,6 +33,9 @@ import com.dokkastudios.enkore.util.StoreResources;
 import Classes.User;
 
 import com.dokkastudios.enkore.util.RequestTo;
+
+import java.net.SocketTimeoutException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -45,17 +50,22 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
     private PagerIndicator _mPagerIndicators = null;
     private ViewPager _mVpager = null;
 
+    private CommitAFragment mCommitAFragment = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_main_app);
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        //InitBackImages();
+
+        mCommitAFragment = new CommitFragmentsInMainApp(getSupportFragmentManager());
+
+        //initBackImages();
         iniApp();
     }
 
-    private void InitBackImages()
+    private void initBackImages()
     {
         int[] _backSourcesImages = {R.drawable.kots_s, R.drawable.log};
 
@@ -71,7 +81,7 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
         _mVpager.addOnPageChangeListener(_mPagerIndicators);
     }
 
-    private boolean IsFNoInternetActive()
+    private boolean isFragmentNoInternetActive()
     {
         if(mFragment != null)
             if(mFragment instanceof FNoInternet)
@@ -83,24 +93,24 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
     {
         if(CheckInternetConection.isNetworkAvailable(getApplicationContext()))
         {
-            if(IsFNoInternetActive())
-                RemoveFragment(FNoInternet.class);
-            CheckUserFromDB();
+            if(isFragmentNoInternetActive())
+                removeFragment(FNoInternet.class);
+            checkUserFromDB();
         }
         else
         {
-            if(IsFNoInternetActive())
+            if(isFragmentNoInternetActive())
                 return;
-            mFragment = CommitFragment.commitFragment(getSupportFragmentManager(), R.id._contentFragsMApp, FNoInternet.class);
+            mCommitAFragment.with(R.id._contentFragsMApp, FNoInternet.class);
         }
     }
 
     /**************************/
 
     @Override
-    public void LogInSuccess(final User _user)
+    public void onLogInSuccess(final User _user)
     {
-        RemoveFragment(FLogIn.class);
+        removeFragment(FLogIn.class);
 
         RequestsToTheDataBase.contextToGetDataBase(this).requestTo(new RequestTo<DB>()
         {
@@ -112,75 +122,63 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
         });
 
         if(mStateRequestDB)
-            GetResources();
+            getResourcesDataBase();
         else
             Toast.makeText(getApplicationContext(), " [Store User] An error has occurred ", Toast.LENGTH_LONG).show();
     }
 
     @Override
-    public void SingUpSuccess()
+    public void onSingUpSuccess()
     {
-        PopBackStack();
+        mCommitAFragment.popBackStack();
         Toast.makeText(getApplicationContext(), "The User has been created", Toast.LENGTH_LONG).show();
-        RemoveFragment(FSingUp.class);
+        removeFragment(FSingUp.class);
     }
 
     @Override
-    public void CheckInternet()
+    public void onCheckInternet()
     {
         iniApp();
     }
 
     @Override
-    public void SingUp()
+    public void onSingUpClicked()
     {
-        mFragment = CommitFragment.commitFragmentToBack(getSupportFragmentManager(), R.id._contentFragsMApp, FSingUp.class,
-                R.anim.enter_animation, R.anim.exit_animation, R.anim.pop_enter, R.anim.pop_exit);
+        mCommitAFragment.with(R.id._contentFragsMApp, FSingUp.class, R.anim.enter_animation, R.anim.exit_animation, R.anim.pop_enter, R.anim.pop_exit);
     }
 
     @Override
-    public void LogIn()
+    public void onLogInClicked()
     {
-        mFragment = CommitFragment.commitFragmentToBack(getSupportFragmentManager(), R.id._contentFragsMApp, FLogIn.class,
-                R.anim.enter_animation, R.anim.exit_animation, R.anim.pop_enter, R.anim.pop_exit);
+        mCommitAFragment.with(R.id._contentFragsMApp, FLogIn.class, R.anim.enter_animation, R.anim.exit_animation, R.anim.pop_enter, R.anim.pop_exit);
     }
     /**************************/
 
-    private void RemoveFragment(Class _class)
+    private void removeFragment(Class _class)
     {
-        android.support.v4.app.Fragment _frag = getSupportFragmentManager().findFragmentByTag(_class.getSimpleName());
-        if(_frag != null)
-            getSupportFragmentManager().beginTransaction().remove(_frag).commit();
-    }
-
-    private void PopBackStack()
-    {
-        if(getSupportFragmentManager().getBackStackEntryCount() > 0)
-            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++)
-                getSupportFragmentManager().popBackStackImmediate();
-
+        mCommitAFragment.removeFragment(_class);
     }
 
     @Override
     public void onBackPressed()
     {
         super.onBackPressed();
-        PopBackStack();
+        mCommitAFragment.popBackStack();
     }
 
-    private void StartGB()
+    private void startEnkore()
     {
         Intent _userAct = new Intent(this, MainUser.class);
         startActivity(_userAct);
         this.finish();
     }
 
-    private void GetResources()
+    private void getResourcesDataBase()
     {
-        GetBE();
+        getBE();
     }
 
-    private void CheckUserFromDB()
+    private void checkUserFromDB()
     {
         RequestsToTheDataBase.contextToGetDataBase(this).requestTo(new RequestTo<DB>()
         {
@@ -192,13 +190,12 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
         });
 
         if (StoreResources.getUser() != null)
-            GetResources();
+            getResourcesDataBase();
         else
-            mFragment = CommitFragment.commitFragment(getSupportFragmentManager(), R.id._contentFragsMApp, FInitApp.class,
-                    R.anim.enter_down_to_up, R.anim.exit_down_to_up);
+            mCommitAFragment.with(R.id._contentFragsMApp, FInitApp.class, R.anim.enter_down_to_up, R.anim.exit_down_to_up);
     }
 
-    private void GetB()
+    private void getB()
     {
         Retrofit _retrofit = RetrofitInstance.getRetrofit();
         EnkorServices _serviceGB = _retrofit.create(EnkorServices.class);
@@ -214,7 +211,7 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
 
                     if(StoreResources.getBands() != null)
                         if(StoreResources.getBands().getBands() != null)
-                            StartGB();
+                            startEnkore();
                         else
                             Toast.makeText(getApplicationContext(), "[MainApp Bands] Something went wrong getting the Bands =(", Toast.LENGTH_LONG).show();
                 }
@@ -233,7 +230,7 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
         });
     }
 
-    private void GetBE()
+    private void getBE()
     {
         Retrofit _retrofit = RetrofitInstance.getRetrofit();
         EnkorServices __serviceGB = _retrofit.create(EnkorServices.class);
@@ -249,7 +246,7 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
             StoreResources.setEvents(response.body());
             if(StoreResources.getEvents() != null)
                 if (StoreResources.getEvents().getEvents() != null)
-                    GetB();
+                    getB();
                 else
                     Toast.makeText(getApplicationContext(), "[MainApp Events] Something went wrong getting the Events ", Toast.LENGTH_LONG).show();
 
@@ -261,7 +258,10 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
     @Override
     public void onFailure(Call<Events> call, Throwable t)
     {
-        Toast.makeText(getApplicationContext(), "[MainApp Events] Something went wrong getting Events: " + t.getMessage(), Toast.LENGTH_LONG).show();
+        if(t instanceof SocketTimeoutException)
+            Toast.makeText(getApplicationContext(), "[MainApp Events] Time out: " + t.getMessage(), Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(getApplicationContext(), "[MainApp Events] Something went wrong getting Events: " + t.getMessage(), Toast.LENGTH_LONG).show();
     }
 
     @Override

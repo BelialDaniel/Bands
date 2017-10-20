@@ -12,25 +12,25 @@ public interface CallbackMainApp
      *
      * @param _user
      */
-    void LogInSuccess(User _user);
+    void onLogInSuccess(User _user);
 
     /**
      *
      */
-    void SingUpSuccess();
+    void onSingUpSuccess();
 
     /**
      *
      */
-    void CheckInternet();
+    void onCheckInternet();
 
     /**
      *
      */
-    void SingUp();
+    void onSingUpClicked();
 
     /**
      *
      */
-    void LogIn();
+    void onLogInClicked();
 }

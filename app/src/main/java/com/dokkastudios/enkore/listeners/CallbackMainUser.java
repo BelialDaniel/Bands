@@ -18,14 +18,12 @@ public interface CallbackMainUser
     //void onBandListClicked(Band band);
 
     /**
-     *
      * @param band
      * @param cardView
      */
     void onBandListClicked(Band band, View cardView);
 
     /**
-     *
      * @param event
      * @param cardView
      */
@@ -38,7 +36,6 @@ public interface CallbackMainUser
     //void onEventListClicked(Event event);
 
     /**
-     *
      * @param event
      */
     void onClickMarker(Event event);

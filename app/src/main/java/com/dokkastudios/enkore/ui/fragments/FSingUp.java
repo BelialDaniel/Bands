@@ -98,7 +98,7 @@ public class FSingUp extends Fragments implements Callback<MessagesInfo>, View.O
                 {
                     ClearTexts();
                     Toast.makeText(getContext(), "Adding User ", Toast.LENGTH_LONG).show();
-                    mCallbackMA.SingUpSuccess();
+                    mCallbackMA.onSingUpSuccess();
                 }
                 else
                 {

@@ -17,6 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.dokkastudios.enkore.fragment.CommitFragmentsMainUser;
+import com.dokkastudios.enkore.fragment.CommitAFragment;
 import com.dokkastudios.enkore.ui.fragments.FBandsCategories;
 import com.dokkastudios.enkore.ui.fragments.FListEvents;
 import com.dokkastudios.enkore.ui.holders.EventCVHolder;
@@ -28,7 +30,7 @@ import com.dokkastudios.enkore.listeners.CallbackMainUser;
 import com.squareup.picasso.Picasso;
 
 import Classes.Band;
-import com.dokkastudios.enkore.fragment.util.CommitFragment;
+
 import com.dokkastudios.enkore.database.util.RequestsToTheDataBase;
 import Classes.Event;
 import com.dokkastudios.enkore.util.StoreResources;
@@ -47,12 +49,16 @@ public class MainUser extends AppCompatActivity implements NavigationView.OnNavi
 
     private View mEventCardV = null;
 
+    private CommitAFragment mCommitAFragment = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_main_user);
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        mCommitAFragment = new CommitFragmentsMainUser(getSupportFragmentManager());
 
         SetReferences();
     }
@@ -90,7 +96,7 @@ public class MainUser extends AppCompatActivity implements NavigationView.OnNavi
         });
 
         DataFromUser(navigationView);
-        CommitFragment.commitFragment(getSupportFragmentManager(), R.id._contentFragsMUser, FListEvents.class);
+        mCommitAFragment.with(R.id._contentFragsMUser, FListEvents.class);
     }
 
     private void DataFromUser(NavigationView navigationView)
@@ -156,8 +162,7 @@ public class MainUser extends AppCompatActivity implements NavigationView.OnNavi
         }
 
         if(_fragClass != null)
-            CommitFragment.commitFragment(getSupportFragmentManager(), R.id._contentFragsMUser, _fragClass,
-                    android.R.anim.fade_in, android.R.anim.fade_out);
+            mCommitAFragment.with(R.id._contentFragsMUser, _fragClass, android.R.anim.fade_in, android.R.anim.fade_out);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -277,7 +282,7 @@ public class MainUser extends AppCompatActivity implements NavigationView.OnNavi
     public void onEventListClicked(Event event)
     {
         StoreResources.setEvent(_event);
-        CommitFragment.commitFragmentToBack(getSupportFragmentManager(), R.id._contentFragsMUser, FInfoEvent.class,
+        CommitAFragment.with(getSupportFragmentManager(), R.id._contentFragsMUser, FInfoEvent.class,
                 android.R.anim.slide_in_left, android.R.anim.slide_out_right, android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }*/
 }

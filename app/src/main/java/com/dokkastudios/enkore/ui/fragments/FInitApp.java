@@ -44,8 +44,8 @@ public class FInitApp extends Fragments implements View.OnClickListener
     public void onClick(View view)
     {
         if(view instanceof Button)
-           mCallbackMA.SingUp();
+           mCallbackMA.onSingUpClicked();
         else if (view instanceof TextView)
-            mCallbackMA.LogIn();
+            mCallbackMA.onLogInClicked();
     }
 }

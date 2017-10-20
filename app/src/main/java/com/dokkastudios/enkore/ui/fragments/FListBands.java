@@ -22,9 +22,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class FListBands extends Fragments implements Callback<Bands>
+public class FListBands extends Fragments
 {
-    //private BandCVAdapter _mCardVBandAdapter = null;
     public FListBands() {}
 
     // TODO: Customize parameter initialization
@@ -46,46 +45,14 @@ public class FListBands extends Fragments implements Callback<Bands>
     {
         super.onActivityCreated(savedInstanceState);
 
-        if(StoreResources.getBands() == null)
-            BandsFromDB();
-        else
+        if(StoreResources.getBands().getBands() != null)
             AsignBandsToList();
-    }
-
-    private void BandsFromDB()
-    {
-        Retrofit _retrofit = RetrofitInstance.getRetrofit();
-        EnkorServices _serviceGB = _retrofit.create(EnkorServices.class);
-        Call<Bands> _bandReq = _serviceGB.getBands();
-        _bandReq.enqueue(this);
     }
 
     private void AsignBandsToList()
     {
-        RecyclerView _reView = getRecyclerView();
+        RecyclerView _reView = getRecyclerView(1);
         if(_reView != null)
             _reView.setAdapter(new BandCVAdapter(StoreResources.getBands().getBands(), mCallBackMU));
-    }
-
-    @Override
-    public void onResponse(Call<Bands> call, Response<Bands> _response)
-    {
-        if(_response.isSuccessful())
-        {
-            if(_response.body() != null)
-                if(_response.body().getBands() != null)
-                {
-                    StoreResources.setBands(_response.body());
-                    AsignBandsToList();
-                }
-        }
-        else
-            Toast.makeText(getContext(), "[BandsFromDB] Something went wrong : " + _response.code(), Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onFailure(Call<Bands> call, Throwable _t)
-    {
-        Toast.makeText(getContext(), "[BandsFromDB] Something went wrong : " + _t.fillInStackTrace(), Toast.LENGTH_LONG).show();
     }
 }

@@ -16,7 +16,7 @@ import com.dokkastudios.enkore.ui.fragments.FSingUp;
 /**
  * Created by BelialDaniel on 8/31/17.
  */
-
+@Deprecated
 public class FragmentFactory
 {
     /**
@@ -26,7 +26,7 @@ public class FragmentFactory
      * @return
      */
      @Deprecated
-    public static Fragments getFragment(Class _class, Object _callback)
+    static public Fragments createFragment(Class _class, Object _callback)
     {
         Fragments _frag = null;
 
@@ -49,19 +49,12 @@ public class FragmentFactory
         else if (FInitApp.class.isAssignableFrom(_class))
             _frag = new FInitApp();
 
-        _frag.FRAGMENT_TAG = _class.getSimpleName();
-        _frag.RegisterListener(_callback);
+        _frag.setFragmentTag(_class.getSimpleName());
+        _frag.registerListener(_callback);
         return _frag;
     }
 
-    public static Fragments getFragmentClass(Class _class)
-    {
-        Fragments _frag = null;
-        _frag.FRAGMENT_TAG = _class.getSimpleName();
-        return _frag;
-    }
-
-    public static Fragments getFragment(Class _class)
+    static public Fragments createFragment(Class _class)
     {
         Fragments _frag = null;
 
@@ -87,8 +80,9 @@ public class FragmentFactory
             _frag = new FNoInternet();
         else if(FBandsCategories.class.isAssignableFrom(_class))
             _frag = new FBandsCategories();
+        else
+            throw new RuntimeException("Missing " + _class.getName() + " fragment ");
 
-        _frag.FRAGMENT_TAG = _class.getSimpleName();
         return _frag;
     }
 }
