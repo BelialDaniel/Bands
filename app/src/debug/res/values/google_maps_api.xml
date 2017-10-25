@@ -9,10 +9,10 @@
     You can also add your credentials to an existing key, using these values:
 
     Package name:
-    15:F1:DB:B3:D5:11:A0:FE:7F:85:B4:0E:D2:C3:B7:55:07:BC:EE:32
+    15:F1:DataBaseSQLite:B3:D5:11:A0:FE:7F:85:B4:0E:D2:C3:B7:55:07:BC:EE:32
 
     SHA-1 certificate fingerprint:
-    15:F1:DB:B3:D5:11:A0:FE:7F:85:B4:0E:D2:C3:B7:55:07:BC:EE:32
+    15:F1:DataBaseSQLite:B3:D5:11:A0:FE:7F:85:B4:0E:D2:C3:B7:55:07:BC:EE:32
 
     Alternatively, follow the directions here:
     https://developers.google.com/maps/documentation/android/start#get-key

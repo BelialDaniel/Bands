@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.dokkastudios.enkore.database.DataBase;
 import com.dokkastudios.enkore.fragment.CommitFragmentsInMainUser;
 import com.dokkastudios.enkore.fragment.CommitAFragment;
 import com.dokkastudios.enkore.ui.fragments.FBandsCategories;
@@ -25,7 +26,6 @@ import com.dokkastudios.enkore.ui.holders.EventCVHolder;
 import com.dokkastudios.enkore.ui.fragments.FMap;
 import com.gb.dokkastudios.enkor.R;
 
-import com.dokkastudios.enkore.database.DB;
 import com.dokkastudios.enkore.listeners.CallbackMainUser;
 import com.squareup.picasso.Picasso;
 
@@ -112,10 +112,10 @@ public class MainUser extends AppCompatActivity implements NavigationView.OnNavi
 
     private void LogOut()
     {
-        RequestsToTheDataBase.contextToGetDataBase(this).requestTo(new RequestTo<DB>()
+        RequestsToTheDataBase.withContext(this).requestTo(new RequestTo<DataBase>()
         {
             @Override
-            public void requestTo(DB request)
+            public void requestTo(DataBase request)
             {
                 mStateRequestDB = request.deleteUser();
             }
@@ -282,7 +282,7 @@ public class MainUser extends AppCompatActivity implements NavigationView.OnNavi
     public void onEventListClicked(Event event)
     {
         StoreResources.setEvent(_event);
-        CommitAFragment.with(getSupportFragmentManager(), R.id._contentFragsMUser, FInfoEvent.class,
+        CommitAFragment.withContext(getSupportFragmentManager(), R.id._contentFragsMUser, FInfoEvent.class,
                 android.R.anim.slide_in_left, android.R.anim.slide_out_right, android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }*/
 }

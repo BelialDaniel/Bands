@@ -17,15 +17,16 @@ import Classes.User;
  * Created by BelialDaniel on 8/11/17.
  */
 
-public class DB extends SQLiteOpenHelper implements DataBase
+public class DataBaseSQLite extends SQLiteOpenHelper implements DataBase
 {
+    private static DataBaseSQLite INSTANCE = null;
+
     public static final String DATABASE_NAME = "GBs.db";
-    public static final int DATABASE_VERSION = 3;
-    private static DB INSTANCE = null;
+    private static final int DATABASE_VERSION = 3;
 
-    private static final String mTableUser = "User";
+    protected static final String mTableUser = "User";
 
-    private static final String
+    protected static final String
             _tU_id       = "_id",
             _tU_name     = "_name",
             _tU_lastName = "_lastName",
@@ -33,72 +34,56 @@ public class DB extends SQLiteOpenHelper implements DataBase
             _tU_city     = "_city",
             _tU_type     = "UserType";
 
-    private static final String mTableTickets = "Tickets";
+    protected static final String mTableTickets = "Tickets";
 
-    private static final String
+    protected static final String
             _tT_id       = "_id",
             _tT_bandName = "_bandName",
             _tT_price    = "_price",
             _tT_date     = "_date",
             _tT_city     = "_city";
 
-    private static final String mTableEvents = "Events";
+    protected static final String mTableEvents = "Events";
 
-    private static final String
-            eID = "ID",
-            eName = "Name",
-            eInfo = "Info",
-            eDate = "Date",
-            eAddress = "Address",
-            eCity = "City",
-            eState = "State",
-            eBandID = "BandID",
+    protected static final String
+            eID       = "ID",
+            eName     = "Name",
+            eInfo     = "Info",
+            eDate     = "Date",
+            eAddress  = "Address",
+            eCity     = "City",
+            eState    = "State",
+            eBandID   = "BandID",
             eBandName = "BandName";
 
     /**
-     *
      * @param context
      */
-    private DB(Context context)
+    //private
+    public DataBaseSQLite(Context context)
     {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
-    }
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);    }
 
     /**
-     * @deprecated
-     * Use contextToGetDataBase to instantiate once time
-     * @param _cont
-     * @param factory
-     * @param version
-     */
-    @Deprecated
-    public DB(Context _cont, SQLiteDatabase.CursorFactory factory, int version)
-    {
-        super(_cont, DATABASE_NAME, factory, version);
-    }
-
-    /**
-     *
      * @param context
      * @param name
      * @param factory
      * @param version
      * @param errorHandler
      */
-    public DB(Context context, String name, SQLiteDatabase.CursorFactory factory, int version, DatabaseErrorHandler errorHandler)
+    private DataBaseSQLite(Context context, String name, SQLiteDatabase.CursorFactory factory, int version, DatabaseErrorHandler errorHandler)
     {
         super(context, name, factory, version, errorHandler);
     }
 
     /**
-     *
      * @param context
      * @return
      */
-    public static DB getInstance(Context context)
+    public static DataBaseSQLite getInstance(Context context)
     {
         if (INSTANCE == null)
-            INSTANCE = new DB(context.getApplicationContext());
+            INSTANCE = new DataBaseSQLite(context.getApplicationContext());
         return INSTANCE;
     }
 
@@ -108,23 +93,23 @@ public class DB extends SQLiteOpenHelper implements DataBase
         String tableUser
                 = "create table if not exists " + mTableUser
                 + "(" +
-                    _tU_id       + " integer not null, " +
-                    _tU_name     + " text, " +
-                    _tU_lastName + " text, " +
-                    _tU_email    + " text, " +
-                    _tU_city     + " text, " +
-                    _tU_type     + " integer not null"
+                _tU_id       + " integer not null, " +
+                _tU_name     + " text, " +
+                _tU_lastName + " text, " +
+                _tU_email    + " text, " +
+                _tU_city     + " text, " +
+                _tU_type     + " integer not null"
                 + ");";
         db.execSQL(tableUser);
 
         String tableTickets
                 = "create table if not exists " + mTableTickets
                 + "(" +
-                    _tT_id       + " integer not null, " +
-                    _tT_bandName + " text, " +
-                    _tT_price    + " decimal, " +
-                    _tT_date     + " date, " +
-                    _tT_city     + " text "
+                _tT_id       + " integer not null, " +
+                _tT_bandName + " text, " +
+                _tT_price    + " decimal, " +
+                _tT_date     + " date, " +
+                _tT_city     + " text "
                 + ");";
         db.execSQL(tableTickets);
 
@@ -153,18 +138,20 @@ public class DB extends SQLiteOpenHelper implements DataBase
         onCreate(db);
     }
 
-    /**===========================================================================================*/
+    /**
+     * ===========================================================================================
+     */
 
     @Override
     public boolean addUser(User user)
     {
         ContentValues _valuesUser = new ContentValues();
-        _valuesUser.put(_tU_id,       user.getUserID());
-        _valuesUser.put(_tU_name,     user.getFirsName());
+        _valuesUser.put(_tU_id, user.getUserID());
+        _valuesUser.put(_tU_name, user.getFirsName());
         _valuesUser.put(_tU_lastName, user.getLastName());
-        _valuesUser.put(_tU_email,    user.getEmail());
-        _valuesUser.put(_tU_city,     user.getCity());
-        _valuesUser.put(_tU_type,     user.getUserType());
+        _valuesUser.put(_tU_email, user.getEmail());
+        _valuesUser.put(_tU_city, user.getCity());
+        _valuesUser.put(_tU_type, user.getUserType());
 
         SQLiteDatabase _db = getWritableDatabase();
         long row = _db.insert(mTableUser, null, _valuesUser);
@@ -185,19 +172,18 @@ public class DB extends SQLiteOpenHelper implements DataBase
         _cur.moveToFirst();
         _db.close();
 
-        if(_cur.getCount() <= 0)
-        {
+        if (_cur.getCount() <= 0) {
             _cur.close();
             return _user;
         }
 
         _user = new User(_cur.getInt(_cur.getColumnIndex(_tU_id)),
-                         _cur.getString(_cur.getColumnIndex(_tU_email)),
-                         _cur.getString(_cur.getColumnIndex(_tU_name)),
-                         _cur.getString(_cur.getColumnIndex(_tU_lastName)),
-                         _cur.getString(_cur.getColumnIndex(_tU_city)),
-                         _cur.getInt(_cur.getColumnIndex(_tU_type))
-                        );
+                _cur.getString(_cur.getColumnIndex(_tU_email)),
+                _cur.getString(_cur.getColumnIndex(_tU_name)),
+                _cur.getString(_cur.getColumnIndex(_tU_lastName)),
+                _cur.getString(_cur.getColumnIndex(_tU_city)),
+                _cur.getInt(_cur.getColumnIndex(_tU_type))
+        );
         _cur.close();
         return _user;
     }
@@ -216,15 +202,15 @@ public class DB extends SQLiteOpenHelper implements DataBase
     public boolean saveEvent(Event event)
     {
         ContentValues valuesEvent = new ContentValues();
-        valuesEvent.put(eID       , event.getID());
-        valuesEvent.put(eName     , event.getName());
-        valuesEvent.put(eInfo     , event.getInfo());
-        valuesEvent.put(eDate     , event.getDate());
-        valuesEvent.put(eAddress  , event.getAddres());
-        valuesEvent.put(eCity     , event.getCity());
-        valuesEvent.put(eState    , event.getState());
-        valuesEvent.put(eBandID   , event.getBandID());
-        valuesEvent.put(eBandName , event.getBandName());
+        valuesEvent.put(eID, event.getID());
+        valuesEvent.put(eName, event.getName());
+        valuesEvent.put(eInfo, event.getInfo());
+        valuesEvent.put(eDate, event.getDate());
+        valuesEvent.put(eAddress, event.getAddres());
+        valuesEvent.put(eCity, event.getCity());
+        valuesEvent.put(eState, event.getState());
+        valuesEvent.put(eBandID, event.getBandID());
+        valuesEvent.put(eBandName, event.getBandName());
 
         SQLiteDatabase db = getWritableDatabase();
         long row = db.insert(mTableEvents, null, valuesEvent);
@@ -282,5 +268,9 @@ public class DB extends SQLiteOpenHelper implements DataBase
         return null;
     }
 
-
+    @Override
+    public void close()
+    {
+        super.close();
+    }
 }

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.dokkastudios.enkore.database.DataBase;
 import com.dokkastudios.enkore.fragment.CommitFragmentsInMainApp;
 import com.dokkastudios.enkore.fragment.CommitAFragment;
 import com.dokkastudios.enkore.listeners.CallbackMainApp;
@@ -23,7 +24,6 @@ import com.gb.dokkastudios.enkor.R;
 
 import Classes.Bands;
 import com.dokkastudios.enkore.util.CheckInternetConection;
-import com.dokkastudios.enkore.database.DB;
 import com.dokkastudios.enkore.database.util.RequestsToTheDataBase;
 import Classes.Events;
 import com.dokkastudios.enkore.fragment.Fragments;
@@ -112,10 +112,10 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
     {
         removeFragment(FLogIn.class);
 
-        RequestsToTheDataBase.contextToGetDataBase(this).requestTo(new RequestTo<DB>()
+        RequestsToTheDataBase.withContext(this).requestTo(new RequestTo<DataBase>()
         {
             @Override
-            public void requestTo(DB request)
+            public void requestTo(DataBase request)
             {
                 mStateRequestDB = request.addUser(_user);
             }
@@ -180,10 +180,10 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
 
     private void checkUserFromDB()
     {
-        RequestsToTheDataBase.contextToGetDataBase(this).requestTo(new RequestTo<DB>()
+        RequestsToTheDataBase.withContext(this).requestTo(new RequestTo<DataBase>()
         {
             @Override
-            public void requestTo(DB request)
+            public void requestTo(DataBase request)
             {
                 StoreResources.setUser(request.getUser());
             }

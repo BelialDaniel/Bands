@@ -2,7 +2,8 @@ package com.dokkastudios.enkore.database.util;
 
 import android.content.Context;
 
-import com.dokkastudios.enkore.database.DB;
+import com.dokkastudios.enkore.database.DataBaseSQLite;
+import com.dokkastudios.enkore.database.DataBase;
 import com.dokkastudios.enkore.util.RequestTo;
 
 /**
@@ -28,7 +29,7 @@ public class RequestsToTheDataBase
      * @param context
      * @return
      */
-    public static RequestsToTheDataBase contextToGetDataBase(Context context)
+    public static RequestsToTheDataBase withContext(Context context)
     {
         if(INSTANCE == null)
             INSTANCE = new RequestsToTheDataBase(context);
@@ -39,9 +40,9 @@ public class RequestsToTheDataBase
      *
      * @param request
      */
-    public void requestTo(RequestTo<DB> request)
+    public void requestTo(RequestTo<DataBase> request)
     {
-        DB db = DB.getInstance(mContext);
+        DataBase db = DataBaseSQLite.getInstance(mContext);
         request.requestTo(db);
         db.close();
     }
@@ -52,6 +53,6 @@ public class RequestsToTheDataBase
      */
     public boolean dropDataBase()
     {
-        return mContext.deleteDatabase(DB.DATABASE_NAME);
+        return mContext.deleteDatabase(DataBaseSQLite.DATABASE_NAME);
     }
 }

@@ -33,8 +33,7 @@ public class CommitFragmentsInMainApp extends CommitAFragment
             frag = new FInitApp();
         else if (FNoInternet.class.isAssignableFrom(_class))
             frag = new FNoInternet();
-        else if(FBandsCategories.class.isAssignableFrom(_class))
-            frag = new FBandsCategories();
+        else new Throwable("Missing fragment " + _class.getSimpleName());
 
         return frag;
     }

@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.dokkastudios.enkore.database.DB;
+import com.dokkastudios.enkore.database.DataBase;
 import com.dokkastudios.enkore.database.util.RequestsToTheDataBase;
 import com.dokkastudios.enkore.util.RequestTo;
 import com.gb.dokkastudios.enkor.R;
@@ -47,10 +47,10 @@ public class EventCVHolder extends RecyclerView.ViewHolder implements View.OnCli
 
     private void saveOrRemoveEvent()
     {
-        RequestsToTheDataBase.contextToGetDataBase(mEventCardView.getContext()).requestTo(new RequestTo<DB>()
+        RequestsToTheDataBase.withContext(mEventCardView.getContext()).requestTo(new RequestTo<DataBase>()
         {
             @Override
-            public void requestTo(DB request)
+            public void requestTo(DataBase request)
             {
                 if(!request.existsEvent(mEvent.getID()))
                 {

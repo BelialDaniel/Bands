@@ -1,5 +1,7 @@
 package com.dokkastudios.enkore.database;
 
+import android.database.sqlite.SQLiteOpenHelper;
+
 import Classes.Band;
 import Classes.Bands;
 import Classes.Event;
@@ -76,4 +78,9 @@ public interface DataBase
      * @return
      */
     Bands getBands();
+
+    /**
+     *
+     */
+    void close();
 }

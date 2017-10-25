@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.dokkastudios.enkore.database.DB;
+import com.dokkastudios.enkore.database.DataBase;
 import com.dokkastudios.enkore.database.util.RequestsToTheDataBase;
 import com.dokkastudios.enkore.ui.holders.EventCVHolder;
 import com.dokkastudios.enkore.util.RequestTo;
@@ -55,10 +55,10 @@ public class EventCVAdapter extends RecyclerView.Adapter<EventCVHolder>
         mEventHolder.mEvent = mEvents.get(position);
         mEventHolder.mTxtCVEventTitle.setText(mEvents.get(position).getName());
 
-        RequestsToTheDataBase.contextToGetDataBase(mEventHolder.mEventCardView.getContext()).requestTo(new RequestTo<DB>()
+        RequestsToTheDataBase.withContext(mEventHolder.mEventCardView.getContext()).requestTo(new RequestTo<DataBase>()
         {
             @Override
-            public void requestTo(DB request)
+            public void requestTo(DataBase request)
             {
                 if(request.existsEvent(mEventHolder.mEvent.getID()))
                     mEventHolder.mFloatingABSaveEvent.setImageResource(R.drawable.ic_turned_in_black);
