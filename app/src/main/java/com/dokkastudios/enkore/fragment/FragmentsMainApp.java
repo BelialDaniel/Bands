@@ -2,7 +2,6 @@ package com.dokkastudios.enkore.fragment;
 
 import android.support.v4.app.FragmentManager;
 
-import com.dokkastudios.enkore.ui.fragments.FBandsCategories;
 import com.dokkastudios.enkore.ui.fragments.FInitApp;
 import com.dokkastudios.enkore.ui.fragments.FLogIn;
 import com.dokkastudios.enkore.ui.fragments.FNoInternet;
@@ -12,10 +11,10 @@ import com.dokkastudios.enkore.ui.fragments.FSingUp;
  * Created by BelialDaniel on 10/20/17.
  */
 
-public class CommitFragmentsInMainApp extends CommitAFragment
+public class FragmentsMainApp extends FragmentApplication
 {
 
-    public CommitFragmentsInMainApp(FragmentManager fragmentManager)
+    public FragmentsMainApp(FragmentManager fragmentManager)
     {
         super(fragmentManager);
     }

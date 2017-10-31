@@ -3,11 +3,7 @@ package com.dokkastudios.enkore.fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.dokkastudios.enkore.ui.fragments.FBandsCategories;
-import com.dokkastudios.enkore.ui.fragments.FInfoBand;
-import com.dokkastudios.enkore.ui.fragments.FInfoEvent;
-import com.dokkastudios.enkore.ui.fragments.FListBands;
 import com.dokkastudios.enkore.ui.fragments.FListEvents;
-import com.dokkastudios.enkore.ui.fragments.FListSongs;
 import com.dokkastudios.enkore.ui.fragments.FMap;
 import com.dokkastudios.enkore.ui.fragments.FNoInternet;
 
@@ -15,9 +11,9 @@ import com.dokkastudios.enkore.ui.fragments.FNoInternet;
  * Created by BelialDaniel on 10/20/17.
  */
 
-public class CommitFragmentsInMainUser extends CommitAFragment
+public class FragmentsMainUser extends FragmentApplication
 {
-    public CommitFragmentsInMainUser(FragmentManager fragmentManager)
+    public FragmentsMainUser(FragmentManager fragmentManager)
     {
         super(fragmentManager);
     }

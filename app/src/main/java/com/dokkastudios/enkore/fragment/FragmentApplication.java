@@ -7,11 +7,11 @@ import android.support.v4.app.FragmentManager;
  * Created by BelialDaniel on 9/22/17.
  */
 
-public abstract class CommitAFragment implements ICommitAFragment
+public abstract class FragmentApplication implements IFragmentApplication
 {
     private FragmentManager mFragmentManager;
 
-    public CommitAFragment(FragmentManager fragmentManager)
+    public FragmentApplication(FragmentManager fragmentManager)
     {
         mFragmentManager = fragmentManager;
     }
@@ -19,7 +19,7 @@ public abstract class CommitAFragment implements ICommitAFragment
     protected abstract Fragments createFragment(Class _class);
 
     @Override
-    public void with(int _contenLayoutID, Class _class)
+    public void commit(int _contenLayoutID, Class _class)
     {
         Fragments _frag = createFragment(_class);
         _frag.setFragmentTag(_class.getSimpleName());
@@ -32,7 +32,7 @@ public abstract class CommitAFragment implements ICommitAFragment
     }
 
     @Override
-    public void with(int _contenLayoutID, Class _class, int _enterAnimation, int _exitAnimation)
+    public void commit(int _contenLayoutID, Class _class, int _enterAnimation, int _exitAnimation)
     {
         Fragments _frag = createFragment(_class);
         _frag.setFragmentTag(_class.getSimpleName());
@@ -45,7 +45,7 @@ public abstract class CommitAFragment implements ICommitAFragment
     }
 
     @Override
-    public void with(int _contenLayoutID, Class _class, int _enterAnimation, int _exitAnimation, int _popEnter, int _popExit)
+    public void commit(int _contenLayoutID, Class _class, int _enterAnimation, int _exitAnimation, int _popEnter, int _popExit)
     {
         Fragments _frag = createFragment(_class);
         _frag.setFragmentTag(_class.getSimpleName());

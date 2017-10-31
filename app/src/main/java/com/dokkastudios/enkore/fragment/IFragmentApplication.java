@@ -8,7 +8,7 @@ import com.dokkastudios.enkore.fragment.Fragments;
  * Created by BelialDaniel on 10/20/17.
  */
 
-public interface ICommitAFragment
+public interface IFragmentApplication
 {
     /**
      *
@@ -16,7 +16,7 @@ public interface ICommitAFragment
      * @param _class
      * @return
      */
-    void with(int _contenLayoutID, Class _class);
+    void commit(int _contenLayoutID, Class _class);
 
     /**
      *
@@ -26,7 +26,7 @@ public interface ICommitAFragment
      * @param _exitAnimation
      * @return
      */
-    void with(int _contenLayoutID, Class _class, int _enterAnimation, int _exitAnimation);
+    void commit(int _contenLayoutID, Class _class, int _enterAnimation, int _exitAnimation);
 
     /**
      *
@@ -38,7 +38,7 @@ public interface ICommitAFragment
      * @param _popExit
      * @return
      */
-    void with(int _contenLayoutID, Class _class, int _enterAnimation, int _exitAnimation, int _popEnter, int _popExit);
+    void commit(int _contenLayoutID, Class _class, int _enterAnimation, int _exitAnimation, int _popEnter, int _popExit);
 
     /**
      *

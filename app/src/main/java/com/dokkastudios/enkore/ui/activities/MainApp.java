@@ -11,8 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.dokkastudios.enkore.database.DataBase;
-import com.dokkastudios.enkore.fragment.CommitFragmentsInMainApp;
-import com.dokkastudios.enkore.fragment.CommitAFragment;
+import com.dokkastudios.enkore.fragment.FragmentsMainApp;
+import com.dokkastudios.enkore.fragment.FragmentApplication;
 import com.dokkastudios.enkore.listeners.CallbackMainApp;
 import com.dokkastudios.enkore.services.EnkorServices;
 import com.dokkastudios.enkore.ui.fragments.FLogIn;
@@ -50,7 +50,7 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
     private PagerIndicator _mPagerIndicators = null;
     private ViewPager _mVpager = null;
 
-    private CommitAFragment mCommitAFragment = null;
+    private FragmentApplication mFragmentsMainApp = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -59,7 +59,7 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
         setContentView(R.layout.a_main_app);
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        mCommitAFragment = new CommitFragmentsInMainApp(getSupportFragmentManager());
+        mFragmentsMainApp = new FragmentsMainApp(getSupportFragmentManager());
 
         //initBackImages();
         iniApp();
@@ -101,7 +101,7 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
         {
             if(isFragmentNoInternetActive())
                 return;
-            mCommitAFragment.with(R.id._contentFragsMApp, FNoInternet.class);
+            mFragmentsMainApp.commit(R.id._contentFragsMApp, FNoInternet.class);
         }
     }
 
@@ -130,7 +130,7 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
     @Override
     public void onSingUpSuccess()
     {
-        mCommitAFragment.popBackStack();
+        mFragmentsMainApp.popBackStack();
         Toast.makeText(getApplicationContext(), "The User has been created", Toast.LENGTH_LONG).show();
         removeFragment(FSingUp.class);
     }
@@ -144,26 +144,26 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
     @Override
     public void onSingUpClicked()
     {
-        mCommitAFragment.with(R.id._contentFragsMApp, FSingUp.class, R.anim.enter_animation, R.anim.exit_animation, R.anim.pop_enter, R.anim.pop_exit);
+        mFragmentsMainApp.commit(R.id._contentFragsMApp, FSingUp.class, R.anim.enter_animation, R.anim.exit_animation, R.anim.pop_enter, R.anim.pop_exit);
     }
 
     @Override
     public void onLogInClicked()
     {
-        mCommitAFragment.with(R.id._contentFragsMApp, FLogIn.class, R.anim.enter_animation, R.anim.exit_animation, R.anim.pop_enter, R.anim.pop_exit);
+        mFragmentsMainApp.commit(R.id._contentFragsMApp, FLogIn.class, R.anim.enter_animation, R.anim.exit_animation, R.anim.pop_enter, R.anim.pop_exit);
     }
     /**************************/
 
     private void removeFragment(Class _class)
     {
-        mCommitAFragment.removeFragment(_class);
+        mFragmentsMainApp.removeFragment(_class);
     }
 
     @Override
     public void onBackPressed()
     {
         super.onBackPressed();
-        mCommitAFragment.popBackStack();
+        mFragmentsMainApp.popBackStack();
     }
 
     private void startEnkore()
@@ -192,7 +192,7 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
         if (StoreResources.getUser() != null)
             getResourcesDataBase();
         else
-            mCommitAFragment.with(R.id._contentFragsMApp, FInitApp.class, R.anim.enter_down_to_up, R.anim.exit_down_to_up);
+            mFragmentsMainApp.commit(R.id._contentFragsMApp, FInitApp.class, R.anim.enter_down_to_up, R.anim.exit_down_to_up);
     }
 
     private void getB()

@@ -14,6 +14,17 @@ public class RequestsToTheDataBase
 {
     private static Context mContext = null;
     private static RequestsToTheDataBase INSTANCE = null;
+    private static DataBase mDB = null;
+
+    /**
+     *
+     * @param context
+     */
+    private RequestsToTheDataBase(Context context, DataBase database)
+    {
+        mContext = context;
+        mDB = database;
+    }
 
     /**
      *
@@ -22,6 +33,7 @@ public class RequestsToTheDataBase
     private RequestsToTheDataBase(Context context)
     {
         mContext = context;
+        mDB = DataBaseSQLite.getInstance(mContext);
     }
 
     /**
@@ -42,9 +54,8 @@ public class RequestsToTheDataBase
      */
     public void requestTo(RequestTo<DataBase> request)
     {
-        DataBase db = DataBaseSQLite.getInstance(mContext);
-        request.requestTo(db);
-        db.close();
+        request.requestTo(mDB);
+        mDB.close();
     }
 
     /**
