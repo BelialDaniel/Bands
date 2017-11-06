@@ -6,21 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.dokkastudios.enkore.services.EnkorServices;
 import com.dokkastudios.enkore.ui.adapters.BandCVAdapter;
 import com.gb.dokkastudios.enkor.R;
 
-import Classes.Bands;
 import com.dokkastudios.enkore.fragment.Fragments;
-import com.dokkastudios.enkore.services.util.RetrofitInstance;
 import com.dokkastudios.enkore.util.StoreResources;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class FListBands extends Fragments
 {
@@ -51,8 +42,8 @@ public class FListBands extends Fragments
 
     private void AsignBandsToList()
     {
-        RecyclerView _reView = getRecyclerView(1);
-        if(_reView != null)
-            _reView.setAdapter(new BandCVAdapter(StoreResources.getBands().getBands(), mCallBackMU));
+        RecyclerView recyclerView = getRecyclerView(1);
+        if(recyclerView != null)
+            recyclerView.setAdapter(new BandCVAdapter(StoreResources.getBands().getBands(), mOnBandListClick));
     }
 }

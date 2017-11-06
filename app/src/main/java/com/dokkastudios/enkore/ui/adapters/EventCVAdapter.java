@@ -7,11 +7,11 @@ import android.view.ViewGroup;
 
 import com.dokkastudios.enkore.database.DataBase;
 import com.dokkastudios.enkore.database.util.RequestsToTheDataBase;
+import com.dokkastudios.enkore.listeners.OnEventListClick;
 import com.dokkastudios.enkore.ui.holders.EventCVHolder;
 import com.dokkastudios.enkore.util.RequestTo;
 import com.gb.dokkastudios.enkor.R;
 
-import com.dokkastudios.enkore.listeners.CallbackMainUser;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -26,12 +26,12 @@ public class EventCVAdapter extends RecyclerView.Adapter<EventCVHolder>
 {
     private final List<Event> mEvents;
     private EventCVHolder mEventHolder = null;
-    private CallbackMainUser onEventListClickListener = null;
+    private OnEventListClick mOnEventListClickListener = null;
 
-    public EventCVAdapter(List<Event> _events, CallbackMainUser _callbackItemClick)
+    public EventCVAdapter(List<Event> _events, OnEventListClick onEventListClickListener)
     {
         this.mEvents = _events;
-        this.onEventListClickListener = _callbackItemClick;
+        this.mOnEventListClickListener = onEventListClickListener;
     }
 
     @Override
@@ -65,7 +65,7 @@ public class EventCVAdapter extends RecyclerView.Adapter<EventCVHolder>
             }
         });
 
-        mEventHolder.onEventLisClickListener = onEventListClickListener;
+        mEventHolder.mOnEventListClickListener = mOnEventListClickListener;
     }
 
     @Override

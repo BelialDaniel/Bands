@@ -5,10 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.dokkastudios.enkore.listeners.OnBandListClick;
 import com.dokkastudios.enkore.ui.holders.BandCVHolder;
 import com.gb.dokkastudios.enkor.R;
 
-import com.dokkastudios.enkore.listeners.CallbackMainUser;
 import com.dokkastudios.enkore.services.EnkorServices;
 import com.squareup.picasso.Picasso;
 
@@ -23,14 +23,14 @@ public class BandCVAdapter extends RecyclerView.Adapter<BandCVHolder>
 {
     private final List<Band> mBands;
     private BandCVHolder mBandHolder = null;
-    private CallbackMainUser onBandLisClickListener = null;
+    private OnBandListClick mOnBandListClickListener = null;
 
     private View view = null;
 
-    public BandCVAdapter(List<Band> _bands, CallbackMainUser _callbackItemClick)
+    public BandCVAdapter(List<Band> _bands, OnBandListClick onBandListClickListener)
     {
         this.mBands = _bands;
-        this.onBandLisClickListener = _callbackItemClick;
+        this.mOnBandListClickListener = onBandListClickListener;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class BandCVAdapter extends RecyclerView.Adapter<BandCVHolder>
                 .centerCrop()
                 .into(mBandHolder.mImageBackBand, mBandHolder);
 
-        mBandHolder.onBandLisClickListener = onBandLisClickListener;
+        mBandHolder.mOnBandListClickListener = mOnBandListClickListener;
     }
 
     @Override

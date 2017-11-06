@@ -172,12 +172,12 @@ public class FMap extends Fragments implements OnMapReadyCallback, Callback<Even
 
     private void OnMapClick()
     {
-        mCallBackMU.onClickMap();
+        mOnMapEventClick.onMapClicked();
     }
 
     private void OnCameraMove()
     {
-        mCallBackMU.onClickMap();
+        mOnMapEventClick.onMapClicked();
     }
 
     @Override
@@ -217,11 +217,11 @@ public class FMap extends Fragments implements OnMapReadyCallback, Callback<Even
                 if (_event.getMarker() != null)
                 {
                     if (marker.getTitle().equals(_event.getMarker().getTitle()))
-                        mCallBackMU.onClickMarker(_event);
+                        mOnMapEventClick.onMarkerClicked(_event);
                 }
         }
         else
-            mCallBackMU.onClickMarker(StoreResources.getEvents().getEvents().get(0));
+            mOnMapEventClick.onMarkerClicked(StoreResources.getEvents().getEvents().get(0));
         return true;
     }
 }

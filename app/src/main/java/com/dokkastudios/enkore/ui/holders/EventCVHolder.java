@@ -8,11 +8,11 @@ import android.widget.TextView;
 
 import com.dokkastudios.enkore.database.DataBase;
 import com.dokkastudios.enkore.database.util.RequestsToTheDataBase;
+import com.dokkastudios.enkore.listeners.OnEventListClick;
 import com.dokkastudios.enkore.util.RequestTo;
 import com.gb.dokkastudios.enkor.R;
 
 import Classes.Event;
-import com.dokkastudios.enkore.listeners.CallbackMainUser;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -30,7 +30,7 @@ public class EventCVHolder extends RecyclerView.ViewHolder implements View.OnCli
     public FloatingActionButton mFloatingABSaveEvent;
 
     public Event mEvent;
-    public CallbackMainUser onEventLisClickListener;
+    public OnEventListClick mOnEventListClickListener;
 
     public EventCVHolder(View _view)
     {
@@ -82,8 +82,8 @@ public class EventCVHolder extends RecyclerView.ViewHolder implements View.OnCli
         }
         else
         {
-            if (onEventLisClickListener != null)
-                onEventLisClickListener.onEventListClicked(mEvent, mEventCardView);
+            if (mOnEventListClickListener != null)
+                mOnEventListClickListener.onEventListClicked(mEvent, mEventCardView);
         }
     }
 

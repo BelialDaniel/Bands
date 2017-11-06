@@ -11,6 +11,7 @@ import com.dokkastudios.enkore.ui.fragments.FSingUp;
  * Created by BelialDaniel on 10/20/17.
  */
 
+@Deprecated
 public class FragmentsMainApp extends FragmentApplication
 {
 

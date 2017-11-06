@@ -11,6 +11,7 @@ import com.dokkastudios.enkore.ui.fragments.FNoInternet;
  * Created by BelialDaniel on 10/20/17.
  */
 
+@Deprecated
 public class FragmentsMainUser extends FragmentApplication
 {
     public FragmentsMainUser(FragmentManager fragmentManager)

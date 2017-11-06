@@ -18,15 +18,17 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.dokkastudios.enkore.database.DataBase;
-import com.dokkastudios.enkore.fragment.FragmentsMainUser;
-import com.dokkastudios.enkore.fragment.FragmentApplication;
+import com.dokkastudios.enkore.fragment.CommitFragment;
+import com.dokkastudios.enkore.fragment.Fragments;
+import com.dokkastudios.enkore.listeners.OnBandListClick;
+import com.dokkastudios.enkore.listeners.OnEventListClick;
+import com.dokkastudios.enkore.listeners.OnMapEventClick;
 import com.dokkastudios.enkore.ui.fragments.FBandsCategories;
 import com.dokkastudios.enkore.ui.fragments.FListEvents;
 import com.dokkastudios.enkore.ui.holders.EventCVHolder;
 import com.dokkastudios.enkore.ui.fragments.FMap;
 import com.gb.dokkastudios.enkor.R;
 
-import com.dokkastudios.enkore.listeners.CallbackMainUser;
 import com.squareup.picasso.Picasso;
 
 import Classes.Band;
@@ -38,7 +40,8 @@ import Classes.User;
 
 import com.dokkastudios.enkore.util.RequestTo;
 
-public class MainUser extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, CallbackMainUser, BottomNavigationView.OnNavigationItemSelectedListener
+public class MainUser extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapEventClick, BottomNavigationView.OnNavigationItemSelectedListener,
+        OnBandListClick, OnEventListClick
 {
     private Event mEvent = null;
 
@@ -49,7 +52,10 @@ public class MainUser extends AppCompatActivity implements NavigationView.OnNavi
 
     private View mEventCardV = null;
 
-    private FragmentApplication mFragmentsMainUser = null;
+    //private FragmentApplication mFragmentsMainUser = null;
+
+    CommitFragment mCommitFragment = null;
+    Fragments mFragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -58,7 +64,9 @@ public class MainUser extends AppCompatActivity implements NavigationView.OnNavi
         setContentView(R.layout.a_main_user);
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        mFragmentsMainUser = new FragmentsMainUser(getSupportFragmentManager());
+        //mFragmentsMainUser = new FragmentsMainUser(getSupportFragmentManager());
+
+        mCommitFragment = new CommitFragment(getSupportFragmentManager());
 
         SetReferences();
     }
@@ -96,7 +104,8 @@ public class MainUser extends AppCompatActivity implements NavigationView.OnNavi
         });
 
         DataFromUser(navigationView);
-        mFragmentsMainUser.commit(R.id._contentFragsMUser, FListEvents.class);
+        //mFragmentsMainUser.commit(R.id._contentFragsMUser, FListEvents.class);
+        mCommitFragment.commit(R.id._contentFragsMUser, (mFragment = new FListEvents()));
     }
 
     private void DataFromUser(NavigationView navigationView)
@@ -132,8 +141,6 @@ public class MainUser extends AppCompatActivity implements NavigationView.OnNavi
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item)
     {
-        Class _fragClass = null;
-
         if(getSupportFragmentManager().getBackStackEntryCount() > 0)
             PopBackStack();
 
@@ -146,13 +153,16 @@ public class MainUser extends AppCompatActivity implements NavigationView.OnNavi
         switch (item.getItemId())
         {
             case R.id._menu_bottomItem_Events:
-                _fragClass = FListEvents.class;
+                //_fragClass = FListEvents.class;
+                mFragment = new FListEvents();
                 break;
             case R.id._menu_bottomItem_Bands:
-                _fragClass = FBandsCategories.class;
+                //_fragClass = FBandsCategories.class;
+                mFragment = new FBandsCategories();
                 break;
             case R.id._menu_bottomItem_Map:
-                  _fragClass = FMap.class;
+                  //_fragClass = FMap.class;
+                mFragment = new FMap();
                 break;
             case R.id._menu_drawerItem_Acount:
                 break;
@@ -161,8 +171,9 @@ public class MainUser extends AppCompatActivity implements NavigationView.OnNavi
                 break;
         }
 
-        if(_fragClass != null)
-            mFragmentsMainUser.commit(R.id._contentFragsMUser, _fragClass, android.R.anim.fade_in, android.R.anim.fade_out);
+        if(mFragment != null)
+            mCommitFragment.commit(R.id._contentFragsMUser, mFragment, android.R.anim.fade_in, android.R.anim.fade_out);
+        //mFragmentsMainUser.commit(R.id._contentFragsMUser, _fragClass, android.R.anim.fade_in, android.R.anim.fade_out);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -171,8 +182,7 @@ public class MainUser extends AppCompatActivity implements NavigationView.OnNavi
 
     private void PopBackStack()
     {
-        for(int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++)
-                getSupportFragmentManager().popBackStackImmediate();
+        mCommitFragment.PopBackStack();
     }
 
     @Override
@@ -243,7 +253,7 @@ public class MainUser extends AppCompatActivity implements NavigationView.OnNavi
     }
 
     @Override
-    public void onClickMarker(final Event event)
+    public void onMarkerClicked(final Event event)
     {
         Picasso.with(mEventCardHolder.mEventCardView.getContext())
                 .load(R.drawable.no_image)
@@ -259,7 +269,7 @@ public class MainUser extends AppCompatActivity implements NavigationView.OnNavi
     }
 
     @Override
-    public void onClickMap()
+    public void onMapClicked()
     {
         if (mPopUpVisible)
         {

@@ -49,8 +49,6 @@ public class FragmentFactory
         else if (FInitApp.class.isAssignableFrom(_class))
             _frag = new FInitApp();
 
-        _frag.setFragmentTag(_class.getSimpleName());
-        _frag.registerListener(_callback);
         return _frag;
     }
 

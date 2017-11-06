@@ -8,37 +8,38 @@ import com.dokkastudios.enkore.fragment.Fragments;
  * Created by BelialDaniel on 10/20/17.
  */
 
+@Deprecated
 public interface IFragmentApplication
 {
     /**
      *
-     * @param _contenLayoutID
+     * @param contenLayoutID
      * @param _class
      * @return
      */
-    void commit(int _contenLayoutID, Class _class);
+    void commit(int contenLayoutID, Class _class);
 
     /**
      *
-     * @param _contenLayoutID
+     * @param contenLayoutID
      * @param _class
-     * @param _enterAnimation
-     * @param _exitAnimation
+     * @param enterAnimation
+     * @param exitAnimation
      * @return
      */
-    void commit(int _contenLayoutID, Class _class, int _enterAnimation, int _exitAnimation);
+    void commit(int contenLayoutID, Class _class, int enterAnimation, int exitAnimation);
 
     /**
      *
-     * @param _contenLayoutID
+     * @param contenLayoutID
      * @param _class
-     * @param _enterAnimation
-     * @param _exitAnimation
-     * @param _popEnter
-     * @param _popExit
+     * @param enterAnimation
+     * @param exitAnimation
+     * @param popEnter
+     * @param popExit
      * @return
      */
-    void commit(int _contenLayoutID, Class _class, int _enterAnimation, int _exitAnimation, int _popEnter, int _popExit);
+    void commit(int contenLayoutID, Class _class, int enterAnimation, int exitAnimation, int popEnter, int popExit);
 
     /**
      *

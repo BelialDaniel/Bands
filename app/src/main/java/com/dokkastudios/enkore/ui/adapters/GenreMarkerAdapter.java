@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 
 import com.dokkastudios.enkore.listeners.CallbackMainApp;
-import com.dokkastudios.enkore.listeners.CallbackMainUser;
 import com.dokkastudios.enkore.ui.fragments.dummy.DummyContent.DummyItem;
 import com.dokkastudios.enkore.ui.holders.GenreHolder;
 import com.gb.dokkastudios.enkor.R;

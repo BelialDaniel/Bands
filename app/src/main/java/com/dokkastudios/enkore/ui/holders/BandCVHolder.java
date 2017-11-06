@@ -1,18 +1,17 @@
 package com.dokkastudios.enkore.ui.holders;
 
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dokkastudios.enkore.services.EnkorServices;
+import com.dokkastudios.enkore.listeners.OnBandListClick;
 import com.gb.dokkastudios.enkor.R;
 
 import Classes.Band;
-import com.dokkastudios.enkore.listeners.CallbackMainUser;
+
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -30,7 +29,7 @@ public class BandCVHolder extends RecyclerView.ViewHolder implements View.OnClic
     private FloatingActionButton mFloatinABLikeBand;
 
     public Band mBand;
-    public CallbackMainUser onBandLisClickListener;
+    public OnBandListClick mOnBandListClickListener;
 
     public BandCVHolder(View view)
     {
@@ -61,8 +60,8 @@ public class BandCVHolder extends RecyclerView.ViewHolder implements View.OnClic
         }
         else //if (view.equals(mBandCardView))
         {
-            if (onBandLisClickListener != null)
-                onBandLisClickListener.onBandListClicked(mBand, mBandCardView);
+            if (mOnBandListClickListener != null)
+                mOnBandListClickListener.onBandListClicked(mBand, mBandCardView);
         }
     }
 

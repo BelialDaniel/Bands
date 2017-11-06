@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
  * Created by BelialDaniel on 9/22/17.
  */
 
+@Deprecated
 public abstract class FragmentApplication implements IFragmentApplication
 {
     private FragmentManager mFragmentManager;
@@ -19,42 +20,39 @@ public abstract class FragmentApplication implements IFragmentApplication
     protected abstract Fragments createFragment(Class _class);
 
     @Override
-    public void commit(int _contenLayoutID, Class _class)
+    public void commit(int contenLayoutID, Class _class)
     {
         Fragments _frag = createFragment(_class);
-        _frag.setFragmentTag(_class.getSimpleName());
 
         mFragmentManager.beginTransaction().replace(
-                _contenLayoutID,
+                contenLayoutID,
                 _frag,
-                _frag.getFragmentTag()
+                _class.getSimpleName()
         ).commit();
     }
 
     @Override
-    public void commit(int _contenLayoutID, Class _class, int _enterAnimation, int _exitAnimation)
+    public void commit(int contenLayoutID, Class _class, int enterAnimation, int exitAnimation)
     {
         Fragments _frag = createFragment(_class);
-        _frag.setFragmentTag(_class.getSimpleName());
 
-        mFragmentManager.beginTransaction().setCustomAnimations(_enterAnimation, _exitAnimation).replace(
-                _contenLayoutID,
+        mFragmentManager.beginTransaction().setCustomAnimations(enterAnimation, exitAnimation).replace(
+                contenLayoutID,
                 _frag,
-                _frag.getFragmentTag()
+                _class.getSimpleName()
         ).commit();
     }
 
     @Override
-    public void commit(int _contenLayoutID, Class _class, int _enterAnimation, int _exitAnimation, int _popEnter, int _popExit)
+    public void commit(int contenLayoutID, Class _class, int enterAnimation, int exitAnimation, int popEnter, int popExit)
     {
         Fragments _frag = createFragment(_class);
-        _frag.setFragmentTag(_class.getSimpleName());
 
-        mFragmentManager.beginTransaction().setCustomAnimations(_enterAnimation, _exitAnimation, _popEnter, _popExit).replace(
-                _contenLayoutID,
+        mFragmentManager.beginTransaction().setCustomAnimations(enterAnimation, exitAnimation, popEnter, popExit).replace(
+                contenLayoutID,
                 _frag,
-                _frag.getFragmentTag()
-        ).addToBackStack(_frag.getFragmentTag()).commit();
+                _class.getSimpleName()
+        ).addToBackStack(_class.getSimpleName()).commit();
     }
 
     @Override

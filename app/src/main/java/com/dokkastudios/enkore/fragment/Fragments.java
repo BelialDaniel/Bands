@@ -8,7 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.dokkastudios.enkore.listeners.CallbackMainApp;
-import com.dokkastudios.enkore.listeners.CallbackMainUser;
+import com.dokkastudios.enkore.listeners.OnMapEventClick;
+import com.dokkastudios.enkore.listeners.OnBandListClick;
+import com.dokkastudios.enkore.listeners.OnEventListClick;
 import com.dokkastudios.enkore.ui.activities.MainApp;
 import com.dokkastudios.enkore.ui.activities.MainUser;
 
@@ -17,31 +19,24 @@ import com.dokkastudios.enkore.ui.activities.MainUser;
  * A simple {@link Fragment} subclass.
  */
 
-public abstract class Fragments extends Fragment implements IFragment
+public abstract class Fragments extends Fragment
 {
     protected CallbackMainApp mCallbackMA = null;
-    protected CallbackMainUser mCallBackMU = null;
 
-    private String mFragmentTag = "";
+    protected OnMapEventClick mOnMapEventClick = null;
+    protected OnEventListClick mOnEventListClick = null;
+    protected OnBandListClick  mOnBandListClick  = null;
 
     protected View mSView = null;
     protected Context mSContext = null;
 
     public Fragments() {}
 
-    @Override
-    public void setFragmentTag(String tag)
-    {
-        mFragmentTag = tag;
-    }
-
-    @Override
-    public String getFragmentTag()
-    {
-        return mFragmentTag;
-    }
-
-    @Override
+    /**
+     *
+     * @param mColumnCount
+     * @return
+     */
     public RecyclerView getRecyclerView(int mColumnCount)
     {
         RecyclerView recyclerView = null;
@@ -59,17 +54,10 @@ public abstract class Fragments extends Fragment implements IFragment
         return recyclerView;
     }
 
-    @Override
-    @Deprecated
-    public void registerListener(Object _callback)
-    {
-        if(_callback instanceof MainApp)
-            mCallbackMA = (CallbackMainApp) _callback;
-        else if(_callback instanceof MainUser)
-            mCallBackMU = (CallbackMainUser) _callback;
-
-    }
-
+    /**
+     *
+     * @param context
+     */
     @Override
     public void onAttach(Context context)
     {
@@ -77,19 +65,29 @@ public abstract class Fragments extends Fragment implements IFragment
         mSContext = context;
 
         if(context instanceof MainUser)
-            mCallBackMU = (CallbackMainUser) context;
+        {
+            mOnMapEventClick = (OnMapEventClick) context;
+
+            mOnEventListClick = (OnEventListClick) context;
+            mOnBandListClick = (OnBandListClick)  context;
+        }
         else if(context instanceof MainApp)
+        {
             mCallbackMA = (CallbackMainApp) context;
+        }
         else
-            throw new RuntimeException(context.toString() + " must implement CallbackMainApp or CallbackMainUser");
+            throw new RuntimeException(context.toString() + " must implement CallbackMainApp or OnMapEventClick");
     }
 
+    /**
+     *
+     */
     @Override
     public void onDetach()
     {
         super.onDetach();
-        if(mCallBackMU != null)
-            mCallBackMU = null;
+        if(mOnMapEventClick != null)
+            mOnMapEventClick = null;
 
         if(mCallbackMA != null)
             mCallbackMA = null;
