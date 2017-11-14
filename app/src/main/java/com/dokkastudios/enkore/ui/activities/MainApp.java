@@ -12,9 +12,8 @@ import android.widget.Toast;
 
 import com.dokkastudios.enkore.database.DataBase;
 import com.dokkastudios.enkore.fragment.CommitFragment;
-import com.dokkastudios.enkore.fragment.FragmentsMainApp;
-import com.dokkastudios.enkore.fragment.FragmentApplication;
-import com.dokkastudios.enkore.listeners.CallbackMainApp;
+import com.dokkastudios.enkore.listeners.LogInAndSignUpStatus;
+import com.dokkastudios.enkore.listeners.InternetStatus;
 import com.dokkastudios.enkore.services.EnkorServices;
 import com.dokkastudios.enkore.ui.fragments.FLogIn;
 import com.dokkastudios.enkore.ui.adapters.BackImagesAdapter;
@@ -42,7 +41,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class MainApp extends AppCompatActivity implements CallbackMainApp, Callback<Events>
+public class MainApp extends AppCompatActivity implements LogInAndSignUpStatus, Callback<Events>, InternetStatus
 {
     private Fragments mFragment = null;
     private boolean mStateRequestDB = false;
@@ -130,7 +129,7 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
     }
 
     @Override
-    public void onSingUpSuccess()
+    public void onSignUpSuccess()
     {
         mCommitFragment.PopBackStack();
         Toast.makeText(getApplicationContext(), "The User has been created", Toast.LENGTH_LONG).show();
@@ -138,13 +137,13 @@ public class MainApp extends AppCompatActivity implements CallbackMainApp, Callb
     }
 
     @Override
-    public void onCheckInternet()
+    public void isInternetAvailable()
     {
         iniApp();
     }
 
     @Override
-    public void onSingUpClicked()
+    public void onSignUpClicked()
     {
         mCommitFragment.commit(R.id._contentFragsMApp, (mFragment = new FSingUp()), R.anim.enter_animation, R.anim.exit_animation, R.anim.pop_enter, R.anim.pop_exit);
     }

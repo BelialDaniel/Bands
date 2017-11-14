@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import com.dokkastudios.enkore.listeners.CallbackMainApp;
+import com.dokkastudios.enkore.listeners.LogInAndSignUpStatus;
 import com.dokkastudios.enkore.ui.fragments.dummy.DummyContent.DummyItem;
 import com.dokkastudios.enkore.ui.holders.GenreHolder;
 import com.gb.dokkastudios.enkor.R;
@@ -16,11 +16,11 @@ import java.util.List;
 public class GenreMarkerAdapter extends RecyclerView.Adapter<GenreHolder>
 {
     private final List<DummyItem> mValues;
-    private final CallbackMainApp mListener;
+    private final LogInAndSignUpStatus mListener;
 
     private View view = null;
 
-    public GenreMarkerAdapter(List<DummyItem> items, CallbackMainApp listener)
+    public GenreMarkerAdapter(List<DummyItem> items, LogInAndSignUpStatus listener)
     {
         mValues = items;
         mListener = listener;

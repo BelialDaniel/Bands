@@ -7,7 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.dokkastudios.enkore.listeners.CallbackMainApp;
+import com.dokkastudios.enkore.listeners.LogInAndSignUpStatus;
 import com.dokkastudios.enkore.listeners.OnMapEventClick;
 import com.dokkastudios.enkore.listeners.OnBandListClick;
 import com.dokkastudios.enkore.listeners.OnEventListClick;
@@ -21,7 +21,7 @@ import com.dokkastudios.enkore.ui.activities.MainUser;
 
 public abstract class Fragments extends Fragment
 {
-    protected CallbackMainApp mCallbackMA = null;
+    protected LogInAndSignUpStatus mCallbackMA = null;
 
     protected OnMapEventClick mOnMapEventClick = null;
     protected OnEventListClick mOnEventListClick = null;
@@ -73,10 +73,10 @@ public abstract class Fragments extends Fragment
         }
         else if(context instanceof MainApp)
         {
-            mCallbackMA = (CallbackMainApp) context;
+            mCallbackMA = (LogInAndSignUpStatus) context;
         }
         else
-            throw new RuntimeException(context.toString() + " must implement CallbackMainApp or OnMapEventClick");
+            throw new RuntimeException(context.toString() + " must implement LogInAndSignUpStatus or OnMapEventClick");
     }
 
     /**

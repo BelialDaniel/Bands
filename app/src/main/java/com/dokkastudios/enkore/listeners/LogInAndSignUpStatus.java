@@ -6,7 +6,7 @@ import Classes.User;
  * Created by BelialDaniel on 8/30/17.
  */
 
-public interface CallbackMainApp
+public interface LogInAndSignUpStatus
 {
     /**
      *
@@ -17,17 +17,12 @@ public interface CallbackMainApp
     /**
      *
      */
-    void onSingUpSuccess();
+    void onSignUpSuccess();
 
     /**
      *
      */
-    void onCheckInternet();
-
-    /**
-     *
-     */
-    void onSingUpClicked();
+    void onSignUpClicked();
 
     /**
      *
